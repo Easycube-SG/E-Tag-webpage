@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 560" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d47a1"/>
+      <stop offset="0.5" stop-color="#1976d2"/>
+      <stop offset="1" stop-color="#1e3a5f"/>
+    </linearGradient>
+    <linearGradient id="shelf" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#e8f1fb"/>
+      <stop offset="1" stop-color="#d8e1ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="560" fill="url(#bg)"/>
+  <!-- warehouse shelves -->
+  <rect x="720" y="120" width="640" height="380" rx="12" fill="#ffffff10"/>
+  <rect x="760" y="160" width="180" height="120" rx="8" fill="url(#shelf)" opacity="0.9"/>
+  <rect x="960" y="160" width="180" height="120" rx="8" fill="url(#shelf)" opacity="0.7"/>
+  <rect x="1160" y="160" width="160" height="120" rx="8" fill="url(#shelf)" opacity="0.5"/>
+  <rect x="760" y="300" width="180" height="120" rx="8" fill="url(#shelf)" opacity="0.6"/>
+  <rect x="960" y="300" width="180" height="120" rx="8" fill="url(#shelf)" opacity="0.8"/>
+  <rect x="1160" y="300" width="160" height="120" rx="8" fill="url(#shelf)" opacity="0.4"/>
+  <!-- parcels on shelves -->
+  <rect x="780" y="200" width="60" height="40" rx="4" fill="#fff" opacity="0.9"/>
+  <rect x="850" y="210" width="50" height="30" rx="4" fill="#fff" opacity="0.7"/>
+  <rect x="980" y="195" width="55" height="35" rx="4" fill="#fff" opacity="0.85"/>
+  <rect x="1180" y="205" width="45" height="28" rx="4" fill="#fff" opacity="0.6"/>
+  <!-- BLE tags glowing -->
+  <circle cx="810" cy="190" r="8" fill="#4caf50" opacity="0.9"/>
+  <circle cx="810" cy="190" r="16" fill="#4caf50" opacity="0.3"/>
+  <circle cx="1010" cy="185" r="8" fill="#4caf50" opacity="0.9"/>
+  <circle cx="1010" cy="185" r="16" fill="#4caf50" opacity="0.3"/>
+  <circle cx="990" cy="340" r="8" fill="#4caf50" opacity="0.9"/>
+  <circle cx="990" cy="340" r="16" fill="#4caf50" opacity="0.3"/>
+  <!-- phone / scanner -->
+  <rect x="900" y="80" width="100" height="170" rx="16" fill="#182230" opacity="0.85"/>
+  <rect x="910" y="95" width="80" height="120" rx="6" fill="#e8f1fb"/>
+  <rect x="920" y="110" width="60" height="8" rx="2" fill="#1976d2"/>
+  <rect x="920" y="130" width="60" height="40" rx="4" fill="#fff" stroke="#1976d2" stroke-width="2"/>
+  <rect x="935" y="145" width="30" height="4" rx="1" fill="#667085"/>
+  <rect x="935" y="155" width="20" height="4" rx="1" fill="#667085"/>
+  <!-- signal waves -->
+  <path d="M850 130 Q820 130 820 160" stroke="#4caf50" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M840 130 Q800 130 800 170" stroke="#4caf50" stroke-width="2" fill="none" opacity="0.4"/>
+  <path d="M830 130 Q780 130 780 180" stroke="#4caf50" stroke-width="2" fill="none" opacity="0.2"/>
+  <!-- decorative dots -->
+  <circle cx="200" cy="400" r="120" fill="#ffffff" opacity="0.04"/>
+  <circle cx="400" cy="150" r="80" fill="#ffffff" opacity="0.06"/>
+  <circle cx="600" cy="450" r="60" fill="#ffffff" opacity="0.05"/>
+</svg>
