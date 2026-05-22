@@ -53,7 +53,7 @@ export default function Benefits() {
             </ul>
 
             <div className="mt-10">
-              <CtaButton>Start Your Free Trial</CtaButton>
+              <CtaButton>Start Your Trial Now</CtaButton>
             </div>
           </div>
 

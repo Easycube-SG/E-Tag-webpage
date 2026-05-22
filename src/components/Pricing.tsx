@@ -47,11 +47,11 @@ export default function Pricing() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Simple, transparent pricing
+            Pricing
           </h2>
           <p className="mt-4 text-lg text-easycube-text-secondary">
             Choose a plan that fits your daily parcel volume. All plans include
-            the Easycube TAG app and backend access.
+            the Easycube TAG app and inventory visibility.
           </p>
         </div>
 
