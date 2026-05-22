@@ -12,7 +12,7 @@ export default function FooterCta() {
             Join shops that are already saving time and delighting customers
             with Easycube TAG.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
             <CtaButton>Get Started Today</CtaButton>
             <CtaButton href="#pricing" variant="secondary">
               View Pricing

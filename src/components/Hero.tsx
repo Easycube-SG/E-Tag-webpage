@@ -22,7 +22,7 @@ export default function Hero() {
                 Easycube TAG links every parcel to a SMART tag. Working with your existing
                 Collection Point App (SPX / NinjaPoint)
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <CtaButton>Request a Demo</CtaButton>
                 <CtaButton href="#workflow" variant="secondary">
                   See How It Works

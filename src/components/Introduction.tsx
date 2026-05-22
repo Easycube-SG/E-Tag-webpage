@@ -50,7 +50,7 @@ export default function Introduction() {
           {features.map((feature) => (
             <article
               key={feature.title}
-              className="rounded-2xl border border-easycube-border bg-easycube-muted/50 p-8 transition-shadow hover:shadow-md"
+              className="rounded-2xl border border-easycube-border bg-easycube-muted/50 p-6 transition-shadow hover:shadow-md sm:p-8"
             >
               <div className="mb-5 inline-flex rounded-xl bg-easycube-blue-light p-3 text-easycube-blue">
                 {feature.icon}

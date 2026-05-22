@@ -57,8 +57,8 @@ export default function Benefits() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-easycube-border bg-white p-6 shadow-sm">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-easycube-border bg-white p-4 shadow-sm sm:p-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <StatCard value="80%" label="Faster parcel retrieval" />
               <StatCard value="$$" label="Take in more parcels" />
               <StatCard value="3×" label="More parcels per hour" />
@@ -73,9 +73,9 @@ export default function Benefits() {
 
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-xl bg-easycube-blue-light p-6 text-center">
-      <p className="text-3xl font-bold text-easycube-blue">{value}</p>
-      <p className="mt-2 text-sm text-easycube-text-secondary">{label}</p>
+    <div className="rounded-xl bg-easycube-blue-light p-4 text-center sm:p-6">
+      <p className="text-2xl font-bold text-easycube-blue sm:text-3xl">{value}</p>
+      <p className="mt-1 text-xs text-easycube-text-secondary sm:mt-2 sm:text-sm">{label}</p>
     </div>
   )
 }

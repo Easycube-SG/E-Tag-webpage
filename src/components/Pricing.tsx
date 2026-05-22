@@ -18,7 +18,7 @@ const plans = [
     period: '/month',
     description: 'For growing collection points with higher volume.',
     features: [
-      'Up to 3 gateway (for extended range',
+      'Up to 3 gateway (for extended range)',
       '>800 BLE tags included',
       'Dedicated dashboard',
       'Priority support',
@@ -59,7 +59,7 @@ export default function Pricing() {
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className={`relative flex flex-col rounded-2xl border p-8 ${
+              className={`relative flex flex-col rounded-2xl border p-6 sm:p-8 ${
                 plan.highlighted
                   ? 'border-easycube-blue bg-white shadow-lg ring-2 ring-easycube-blue'
                   : 'border-easycube-border bg-white shadow-sm'
@@ -70,11 +70,11 @@ export default function Pricing() {
                   Most Popular
                 </span>
               )}
-              <h3 className="text-xl font-semibold text-easycube-navy">
+              <h3 className="text-lg font-semibold leading-snug text-easycube-navy sm:text-xl">
                 {plan.name}
               </h3>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-easycube-blue">
+                <span className="text-3xl font-bold text-easycube-blue sm:text-4xl">
                   {plan.price}
                 </span>
                 {plan.period && (
