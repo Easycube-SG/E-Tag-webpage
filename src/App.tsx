@@ -7,8 +7,21 @@ import Pricing from './components/Pricing'
 import FAQs from './components/FAQs'
 import ContactForm from './components/ContactForm'
 import FooterCta from './components/FooterCta'
+import SubscribeSuccess from './components/SubscribeSuccess'
+import SubscriptionPage from './pages/SubscriptionPage'
+import CheckoutPage from './pages/CheckoutPage'
 
-function App() {
+function AppShell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen">
+      <Header />
+      {children}
+      <FooterCta showCta={false} />
+    </div>
+  )
+}
+
+function LandingPage() {
   return (
     <div className="min-h-screen">
       <Header />
@@ -24,6 +37,36 @@ function App() {
       </main>
     </div>
   )
+}
+
+function App() {
+  const pathname = window.location.pathname
+
+  if (pathname === '/checkout') {
+    return (
+      <AppShell>
+        <CheckoutPage />
+      </AppShell>
+    )
+  }
+
+  if (pathname === '/subscription') {
+    return (
+      <AppShell>
+        <SubscriptionPage />
+      </AppShell>
+    )
+  }
+
+  if (pathname === '/subscribe/success') {
+    return (
+      <AppShell>
+        <SubscribeSuccess />
+      </AppShell>
+    )
+  }
+
+  return <LandingPage />
 }
 
 export default App

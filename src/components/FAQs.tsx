@@ -2,9 +2,19 @@ import { useState } from 'react'
 
 const faqs = [
   {
+    question: 'How does Pilot billing work?',
+    answer:
+      'The Pilot plan is S$20/month, billed automatically via Stripe when you subscribe online. BLE tags and hardware are billed separately (S$1/tag for Pilot) — contact us to order tags. Standard and Enterprise plans are arranged through our team.',
+  },
+  {
+    question: 'How do I cancel my subscription?',
+    answer:
+      'Visit our Subscription page, enter the email you used at signup, and open the Stripe billing portal. Cancel there anytime — cancellation takes effect at the end of your current billing period, so you will not be charged for the following month. No Easycube login is required.',
+  },
+  {
     question: 'What hardware do I need to get started?',
     answer:
-      'You need an Android gateway device (phone or tablet), BLE tags, and a Bluetooth advertiser unit. Starter kits are available with each plan.',
+      'You need an Android gateway device (phone or tablet), BLE tags, and a Bluetooth advertiser unit. Contact us to order tags and hardware for your plan.',
   },
   {
     question: 'How long does setup take?',

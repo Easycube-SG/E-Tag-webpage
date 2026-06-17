@@ -1,31 +1,56 @@
-const plans = [
+import {
+  formatSgd,
+  PILOT_MONTHLY_SGD,
+  PILOT_TAG_UNIT_PRICE_SGD,
+  STANDARD_MONTHLY_SGD,
+  STANDARD_TAG_UNIT_PRICE_SGD,
+} from '../lib/pricing'
+
+type PlanId = 'pilot' | 'standard' | 'enterprise'
+
+const plans: {
+  id: PlanId
+  name: string
+  price: string
+  period: string
+  description: string
+  features: string[]
+  highlighted: boolean
+  checkout: boolean
+}[] = [
   {
-    name: 'Starter',
-    price: '$39',
+    id: 'pilot',
+    name: 'Pilot',
+    price: formatSgd(PILOT_MONTHLY_SGD),
+    period: '/month',
+    description: 'Try Easycube TAG at a reduced rate while we refine the product with early partners.',
+    features: [
+      '1 gateway device',
+      `${formatSgd(PILOT_TAG_UNIT_PRICE_SGD)} per BLE tag (hardware billed separately)`,
+      'Inbound & outbound workflows',
+      'Basic inventory view',
+      'Cancel anytime — effective end of billing period',
+    ],
+    highlighted: true,
+    checkout: true,
+  },
+  {
+    id: 'standard',
+    name: 'Standard',
+    price: formatSgd(STANDARD_MONTHLY_SGD),
     period: '/month',
     description: 'For small shops handling up to 500 parcels daily.',
     features: [
       '1 gateway device',
-      '$3 per BLE tags',
+      `${formatSgd(STANDARD_TAG_UNIT_PRICE_SGD)} per BLE tag (hardware billed separately)`,
       'Inbound & outbound workflows',
       'Basic inventory view',
     ],
     highlighted: false,
+    checkout: false,
   },
   {
-    name: 'Dedicated Collection point',
-    price: '$99',
-    period: '/month',
-    description: 'For growing collection points with higher volume.',
-    features: [
-      'Up to 3 gateway (for extended range)',
-      '>800 BLE tags included',
-      'Dedicated dashboard',
-      'Priority support',
-    ],
-    highlighted: true,
-  },
-  {
+    id: 'enterprise',
     name: 'Enterprise',
     price: 'Custom',
     period: '',
@@ -38,6 +63,7 @@ const plans = [
       'SLA & account manager',
     ],
     highlighted: false,
+    checkout: false,
   },
 ]
 
@@ -50,15 +76,24 @@ export default function Pricing() {
             Pricing
           </h2>
           <p className="mt-4 text-lg text-easycube-text-secondary">
-            Choose a plan that fits your daily parcel volume. All plans include
-            the Easycube TAG app and inventory visibility.
+            Choose a plan that fits your shop. Pilot subscriptions are available
+            online; Standard and Enterprise — contact us to get started.
+          </p>
+          <p className="mt-2 text-sm text-easycube-text-secondary">
+            Already subscribed?{' '}
+            <a
+              href="/subscription"
+              className="font-medium text-easycube-blue hover:underline"
+            >
+              Manage your subscription
+            </a>
           </p>
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
           {plans.map((plan) => (
             <article
-              key={plan.name}
+              key={plan.id}
               className={`relative flex flex-col rounded-2xl border p-6 sm:p-8 ${
                 plan.highlighted
                   ? 'border-easycube-blue bg-white shadow-lg ring-2 ring-easycube-blue'
@@ -67,7 +102,7 @@ export default function Pricing() {
             >
               {plan.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-easycube-blue px-4 py-1 text-xs font-semibold text-white">
-                  Most Popular
+                  Pilot program
                 </span>
               )}
               <h3 className="text-lg font-semibold leading-snug text-easycube-navy sm:text-xl">
@@ -109,16 +144,38 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
-                className={`mt-8 block rounded-lg py-3 text-center text-sm font-semibold transition-colors ${
-                  plan.highlighted
-                    ? 'bg-easycube-blue text-white hover:bg-easycube-blue-dark'
-                    : 'border border-easycube-border text-easycube-navy hover:border-easycube-blue hover:text-easycube-blue'
-                }`}
-              >
-                {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-              </a>
+
+              {plan.checkout ? (
+                <a
+                  href="/checkout"
+                  className="mt-8 block w-full rounded-lg bg-easycube-blue py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-easycube-blue-dark"
+                >
+                  Get Started
+                </a>
+              ) : (
+                <a
+                  href="#contact"
+                  className={`mt-8 block rounded-lg py-3 text-center text-sm font-semibold transition-colors ${
+                    plan.id === 'enterprise'
+                      ? 'border border-easycube-border text-easycube-navy hover:border-easycube-blue hover:text-easycube-blue'
+                      : 'border border-easycube-border text-easycube-navy hover:border-easycube-blue hover:text-easycube-blue'
+                  }`}
+                >
+                  {plan.id === 'enterprise' ? 'Contact Sales' : 'Contact us'}
+                </a>
+              )}
+
+              {plan.checkout && (
+                <p className="mt-3 text-center text-xs text-easycube-text-secondary">
+                  Visa & Mastercard accepted ·{' '}
+                  <a
+                    href="/subscription"
+                    className="text-easycube-blue hover:underline"
+                  >
+                    Manage or cancel
+                  </a>
+                </p>
+              )}
             </article>
           ))}
         </div>

@@ -2,10 +2,11 @@ import { useState } from 'react'
 import CtaButton from './CtaButton'
 
 const navLinks = [
-  { label: 'Benefits', href: '#benefits' },
-  { label: 'Workflow', href: '#workflow' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Benefits', href: '/#benefits' },
+  { label: 'Workflow', href: '/#workflow' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Subscription', href: '/subscription' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export default function Header() {
@@ -14,7 +15,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-easycube-border bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <img
             src="/easycube_logo.png"
             alt="Easycube TAG"
@@ -35,7 +36,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <CtaButton>Get Started</CtaButton>
+          <CtaButton href="/#pricing">Get Started</CtaButton>
         </div>
 
         <button
@@ -82,7 +83,9 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <CtaButton className="mt-2 w-full">Get Started</CtaButton>
+            <CtaButton href="/#pricing" className="mt-2 w-full">
+              Get Started
+            </CtaButton>
           </nav>
         </div>
       )}
