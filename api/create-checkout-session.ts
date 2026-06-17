@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getPilotPriceId, getSiteUrl, validatePlan } from './lib/config'
-import { getStripe } from './lib/stripe'
+import { getPilotPriceId, getSiteUrl, getStripe, validatePlan } from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -23,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const stripe = getStripe()
 
     const session = await stripe.checkout.sessions.create({
-      ui_mode: 'embedded',
+      ui_mode: 'embedded_page',
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
       subscription_data: {

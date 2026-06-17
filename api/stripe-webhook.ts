@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { buffer } from 'micro'
 import Stripe from 'stripe'
-import { getStripe } from './lib/stripe'
+import { getStripe } from './shared.js'
 
 export const config = {
   api: {

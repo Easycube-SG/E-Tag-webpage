@@ -1,9 +1,20 @@
 import type { VercelRequest } from '@vercel/node'
+import Stripe from 'stripe'
 
 export type PlanId = 'pilot'
 
-export const PILOT_MONTHLY_SGD = 20
-export const STANDARD_MONTHLY_SGD = 39
+let stripeClient: Stripe | null = null
+
+export function getStripe(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(secretKey)
+  }
+  return stripeClient
+}
 
 export function getSiteUrl(req?: VercelRequest): string {
   if (process.env.SITE_URL) {

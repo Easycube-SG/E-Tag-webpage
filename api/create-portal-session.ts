@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getSiteUrl, validateEmail } from './lib/config'
-import { getStripe } from './lib/stripe'
+import { getSiteUrl, getStripe, validateEmail } from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
