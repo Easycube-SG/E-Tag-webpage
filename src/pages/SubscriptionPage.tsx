@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { openBillingPortal } from '../lib/portal'
 import {
   formatSgd,
-  PILOT_MONTHLY_SGD,
+  PILOT_DEPOSIT_SGD,
   PILOT_TAG_UNIT_PRICE_SGD,
 } from '../lib/pricing'
 
@@ -38,9 +38,9 @@ export default function SubscriptionPage() {
             Manage your subscription
           </h1>
           <p className="mt-4 text-lg text-easycube-text-secondary">
-            View your Pilot plan, update your payment method, or cancel your
-            subscription. You will be redirected to our secure Stripe billing
-            portal.
+            For customers with an active recurring Stripe subscription. Pilot
+            registration deposits are one-time — contact us for billing
+            questions.
           </p>
         </div>
 
@@ -121,17 +121,18 @@ export default function SubscriptionPage() {
             </h2>
             <ul className="mt-4 space-y-3 text-sm text-easycube-text-secondary">
               <li>
-                Pilot plan billing is {formatSgd(PILOT_MONTHLY_SGD)}/month,
-                charged automatically until you cancel.
+                Pilot registration is a one-time{' '}
+                {formatSgd(PILOT_DEPOSIT_SGD)} deposit — not managed here.
+                This portal is for active recurring subscriptions only.
               </li>
               <li>
                 BLE tags and hardware are billed separately (
                 {formatSgd(PILOT_TAG_UNIT_PRICE_SGD)}/tag for Pilot) — contact
-                us to order tags; they are not managed in the Stripe portal.
+                us after the trial; not managed in the Stripe portal.
               </li>
               <li>
-                Cancellation takes effect at the end of the current paid month.
-                We do not offer partial-month refunds unless required by law.
+                Cancellation of a recurring plan takes effect at the end of the
+                current billing period.
               </li>
               <li>
                 No password or Easycube account is required — your subscription

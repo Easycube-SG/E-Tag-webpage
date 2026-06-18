@@ -10,6 +10,7 @@ import FooterCta from './components/FooterCta'
 import SubscribeSuccess from './components/SubscribeSuccess'
 import SubscriptionPage from './pages/SubscriptionPage'
 import CheckoutPage from './pages/CheckoutPage'
+import PilotTrialPage from './pages/PilotTrialPage'
 
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
@@ -54,6 +55,14 @@ function App() {
     return (
       <AppShell>
         <SubscriptionPage />
+      </AppShell>
+    )
+  }
+
+  if (pathname === '/pilot-trial') {
+    return (
+      <AppShell>
+        <PilotTrialPage />
       </AppShell>
     )
   }

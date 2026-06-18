@@ -1,51 +1,40 @@
 # Easycube TAG Landing Page
 
-React + TypeScript + Vite site deployed on Vercel with Stripe Pilot subscriptions.
+React + TypeScript + Vite site deployed on Vercel with Stripe Pilot registration.
 
 ## Local development
 
-Use **two terminals** so the frontend and Stripe API routes can run without `vercel.json` SPA rewrites breaking Vite.
-
-**Terminal 1 — API (port 3001)**
-
 ```bash
 npm install
-npm run dev:api
+cp .env.example .env.local   # then fill in Stripe keys (see below)
+npm run dev:api                # http://localhost:3001 — UI + API
 ```
 
-Uses `vercel.dev.json` (no SPA rewrites). Loads env from `.env.local`. API errors and `console.log` appear in this terminal.
+Do **not** run `vercel env pull .env.local` without backing up manual secrets (Sensitive vars are not in Development scope).
 
-**Terminal 2 — frontend (port 5173)**
+## Stripe setup
 
-```bash
-npm run dev
-```
-
-Open **http://localhost:5173**. Vite proxies `/api/*` to port 3001.
-
-Requires [Vercel CLI](https://vercel.com/docs/cli) (`npm i -g vercel`) and a linked project (`vercel link` once). Copy `.env.example` to `.env.local` before testing checkout.
-
-Do **not** use plain `vercel dev` for local UI work — production `vercel.json` rewrites conflict with Vite dev module paths. Production deploys are unaffected.
-
-## Stripe setup (before production)
-
-1. Copy `.env.example` to `.env.local` for local `dev:api`, and set the same variables in the Vercel project dashboard for production.
-2. Create a **Pilot** product in Stripe: SGD **20.00/month** (recurring). Set `STRIPE_PRICE_PILOT` to the **price** id (`price_...`, not `prod_...`).
-3. Set `VITE_STRIPE_PUBLISHABLE_KEY` (pk_test_... / pk_live_...) for embedded checkout on `/checkout`.
-4. Enable **Customer Portal** (Settings → Billing): cancel at period end, update payment method.
-5. Add webhook `https://your-domain.com/api/stripe-webhook` with events: `checkout.session.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.updated`, `customer.subscription.deleted`.
+1. Copy `.env.example` → `.env.local` and fill in keys (see comments in that file).
+2. **Stripe Dashboard → Products** — create a **one-time** price:
+   - Product: Pilot registration deposit
+   - Amount: SGD 20.00, **One time** (not monthly)
+   - Set `STRIPE_PRICE_PILOT_DEPOSIT=price_...` in `.env.local` and Vercel
+3. Set `STRIPE_SECRET_KEY` and `VITE_STRIPE_PUBLISHABLE_KEY` (test keys while sandboxing).
+4. Set `SITE_URL` — `http://localhost:3001` locally, `https://easycubesg.com` on Production.
+5. Redeploy Vercel after env changes.
 
 ## Test checklist
 
-- Pilot **Get Started** → `/checkout` (embedded Stripe) → `/subscribe/success`
-- `/subscription` → enter email → Stripe Customer Portal
-- Cancel in portal → no charge next billing cycle
-- Standard / Enterprise → contact form only
+- Pricing → **Register interest** → `/checkout` → pay with `4242 4242 4242 4242`
+- Success → `/subscribe/success?session_id=...`
+- Stripe Dashboard (test mode) → **Payments** shows S$20 one-time (not Subscriptions)
+- Pilot trial → `/pilot-trial` for onboarding copy
 
-Test card: `4242 4242 4242 4242`
+## Vercel env vars (Production + Preview)
 
-Quick API smoke test (with `dev:api` running):
-
-```powershell
-curl -X POST http://localhost:3001/api/create-checkout-session -H "Content-Type: application/json" -d "{\"plan\":\"pilot\"}"
-```
+| Variable | Sensitive? | Notes |
+|---|---|---|
+| `STRIPE_SECRET_KEY` | Yes | `sk_test_...` or `sk_live_...` |
+| `STRIPE_PRICE_PILOT_DEPOSIT` | Yes | One-time `price_...` |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | No | `pk_test_...` / `pk_live_...` |
+| `SITE_URL` | No | Production: `https://easycubesg.com` |

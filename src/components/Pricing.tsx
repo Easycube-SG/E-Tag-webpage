@@ -1,11 +1,3 @@
-import {
-  formatSgd,
-  PILOT_MONTHLY_SGD,
-  PILOT_TAG_UNIT_PRICE_SGD,
-  STANDARD_MONTHLY_SGD,
-  STANDARD_TAG_UNIT_PRICE_SGD,
-} from '../lib/pricing'
-
 type PlanId = 'pilot' | 'standard' | 'enterprise'
 
 const plans: {
@@ -21,15 +13,13 @@ const plans: {
   {
     id: 'pilot',
     name: 'Pilot',
-    price: formatSgd(PILOT_MONTHLY_SGD),
-    period: '/month',
-    description: 'Try Easycube TAG at a reduced rate while we refine the product with early partners.',
+    price: 'Flat Rate',
+    period: '',
+    description: 'Be our first early partners to try Easycube TAG at a reduced usage rate.',
     features: [
       '1 gateway device',
-      `${formatSgd(PILOT_TAG_UNIT_PRICE_SGD)} per BLE tag (hardware billed separately)`,
       'Inbound & outbound workflows',
-      'Basic inventory view',
-      'Cancel anytime — effective end of billing period',
+      'Pilot trial terms apply — see onboarding page',
     ],
     highlighted: true,
     checkout: true,
@@ -37,14 +27,14 @@ const plans: {
   {
     id: 'standard',
     name: 'Standard',
-    price: formatSgd(STANDARD_MONTHLY_SGD),
-    period: '/month',
+    price: 'Tiered Pricing',
+    period: '',
     description: 'For small shops handling up to 500 parcels daily.',
     features: [
       '1 gateway device',
-      `${formatSgd(STANDARD_TAG_UNIT_PRICE_SGD)} per BLE tag (hardware billed separately)`,
       'Inbound & outbound workflows',
       'Basic inventory view',
+      'Billed on usage — contact us to get started',
     ],
     highlighted: false,
     checkout: false,
@@ -57,7 +47,7 @@ const plans: {
     description: 'Multi-location operations with advanced needs.',
     features: [
       'Unlimited gateways',
-      'Custom tag quantities',
+      'Custom usage rates',
       'Multi-shop dashboard',
       'Dedicated onboarding',
       'SLA & account manager',
@@ -76,16 +66,16 @@ export default function Pricing() {
             Pricing
           </h2>
           <p className="mt-4 text-lg text-easycube-text-secondary">
-            Choose a plan that fits your shop. Pilot subscriptions are available
-            online; Standard and Enterprise — contact us to get started.
+            Simple usage-based pricing — pay per parcel tracked. Pilot trialists
+            register online; Standard and Enterprise — contact us to get started.
           </p>
           <p className="mt-2 text-sm text-easycube-text-secondary">
-            Already subscribed?{' '}
+            Joining the pilot?{' '}
             <a
-              href="/subscription"
+              href="/pilot-trial"
               className="font-medium text-easycube-blue hover:underline"
             >
-              Manage your subscription
+              Read the trial onboarding
             </a>
           </p>
         </div>
@@ -108,7 +98,7 @@ export default function Pricing() {
               <h3 className="text-lg font-semibold leading-snug text-easycube-navy sm:text-xl">
                 {plan.name}
               </h3>
-              <div className="mt-4 flex items-baseline gap-1">
+              <div className="mt-4 flex items-baseline gap-1.5">
                 <span className="text-3xl font-bold text-easycube-blue sm:text-4xl">
                   {plan.price}
                 </span>
@@ -147,10 +137,10 @@ export default function Pricing() {
 
               {plan.checkout ? (
                 <a
-                  href="/checkout"
+                  href="/pilot-trial"
                   className="mt-8 block w-full rounded-lg bg-easycube-blue py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-easycube-blue-dark"
                 >
-                  Get Started
+                  Register
                 </a>
               ) : (
                 <a
@@ -163,18 +153,6 @@ export default function Pricing() {
                 >
                   {plan.id === 'enterprise' ? 'Contact Sales' : 'Contact us'}
                 </a>
-              )}
-
-              {plan.checkout && (
-                <p className="mt-3 text-center text-xs text-easycube-text-secondary">
-                  Visa & Mastercard accepted ·{' '}
-                  <a
-                    href="/subscription"
-                    className="text-easycube-blue hover:underline"
-                  >
-                    Manage or cancel
-                  </a>
-                </p>
               )}
             </article>
           ))}

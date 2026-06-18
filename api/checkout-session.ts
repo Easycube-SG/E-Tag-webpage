@@ -14,20 +14,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const stripe = getStripe()
-    const session = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ['subscription'],
-    })
+    const session = await stripe.checkout.sessions.retrieve(sessionId)
 
     if (session.status !== 'complete') {
       return res.status(400).json({ error: 'session_not_complete' })
     }
 
-    const subscription =
-      typeof session.subscription === 'object' ? session.subscription : null
-
     return res.status(200).json({
       email: session.customer_details?.email ?? session.customer_email,
-      plan: subscription?.metadata?.plan ?? 'pilot',
+      plan: session.metadata?.plan ?? 'pilot',
+      type: session.metadata?.type ?? 'registration_deposit',
     })
   } catch (err) {
     console.error('checkout-session error:', err)

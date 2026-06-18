@@ -42,8 +42,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const session = event.data.object as Stripe.Checkout.Session
         console.log('Checkout completed:', {
           sessionId: session.id,
+          mode: session.mode,
           customerEmail: session.customer_details?.email ?? session.customer_email,
-          plan: 'pilot',
+          type: session.metadata?.type ?? 'registration_deposit',
+          plan: session.metadata?.plan ?? 'pilot',
         })
         break
       }

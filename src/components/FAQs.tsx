@@ -1,15 +1,21 @@
 import { useState } from 'react'
+import {
+  formatCentsPerParcel,
+  formatSgd,
+  PILOT_DEPOSIT_SGD,
+  PILOT_PARCEL_CENTS,
+  STANDARD_PARCEL_CENTS,
+} from '../lib/pricing'
 
 const faqs = [
   {
-    question: 'How does Pilot billing work?',
-    answer:
-      'The Pilot plan is S$20/month, billed automatically via Stripe when you subscribe online. BLE tags and hardware are billed separately (S$1/tag for Pilot) — contact us to order tags. Standard and Enterprise plans are arranged through our team.',
+    question: 'How does billing work?',
+    answer: `Usage is billed per parcel tracked — Pilot at ${formatCentsPerParcel(PILOT_PARCEL_CENTS)} per parcel, Standard at ${formatCentsPerParcel(STANDARD_PARCEL_CENTS)} per parcel. Pilot trialists pay a one-time ${formatSgd(PILOT_DEPOSIT_SGD)} deposit online to register interest (see our Pilot trial page). Standard and Enterprise plans are arranged through our team.`,
   },
   {
-    question: 'How do I cancel my subscription?',
+    question: 'How do I cancel or manage billing?',
     answer:
-      'Visit our Subscription page, enter the email you used at signup, and open the Stripe billing portal. Cancel there anytime — cancellation takes effect at the end of your current billing period, so you will not be charged for the following month. No Easycube login is required.',
+      'The pilot registration deposit is a one-time payment. Ongoing usage billing is arranged after the trial. If you have an active recurring subscription with us, visit the Subscription page (footer link) to open the Stripe billing portal.',
   },
   {
     question: 'What hardware do I need to get started?',

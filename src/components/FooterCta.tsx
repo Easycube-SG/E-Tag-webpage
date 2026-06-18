@@ -36,6 +36,12 @@ export default function FooterCta({ showCta = true }: FooterCtaProps) {
           />
           <nav className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <a
+              href="/pilot-trial"
+              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
+            >
+              Pilot trial
+            </a>
+            <a
               href="/subscription"
               className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
             >

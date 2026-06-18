@@ -5,7 +5,7 @@ import {
 } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { fetchPilotCheckoutClientSecret } from '../lib/checkout'
-import { formatSgd, PILOT_MONTHLY_SGD } from '../lib/pricing'
+import { formatSgd, PILOT_DEPOSIT_SGD } from '../lib/pricing'
 
 const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as
   | string
@@ -34,10 +34,10 @@ export default function CheckoutPage() {
           <div className="rounded-2xl border border-easycube-border bg-white p-8 shadow-sm">
             <p className="text-easycube-text-secondary">{initError}</p>
             <a
-              href="/#pricing"
+              href="/pilot-trial"
               className="mt-6 inline-block rounded-lg bg-easycube-blue px-6 py-3 text-sm font-semibold text-white hover:bg-easycube-blue-dark"
             >
-              Back to pricing
+              Back to pilot trial
             </a>
           </div>
         </div>
@@ -50,14 +50,11 @@ export default function CheckoutPage() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Subscribe to Pilot
+            Register your interest
           </h1>
           <p className="mt-2 text-easycube-text-secondary">
-            Secure payment powered by Stripe. Cancel anytime from our{' '}
-            <a href="/subscription" className="text-easycube-blue hover:underline">
-              Subscription page
-            </a>
-            .
+            One-time deposit to secure your pilot trial spot. Secure payment
+            powered by Stripe.
           </p>
         </div>
 
@@ -67,25 +64,31 @@ export default function CheckoutPage() {
               Order summary
             </p>
             <h2 className="mt-2 text-xl font-semibold text-easycube-navy">
-              Easycube TAG Pilot
+              Pilot trial registration
             </h2>
             <div className="mt-4 flex items-baseline gap-1">
               <span className="text-3xl font-bold text-easycube-blue">
-                {formatSgd(PILOT_MONTHLY_SGD)}
+                {formatSgd(PILOT_DEPOSIT_SGD)}
               </span>
-              <span className="text-easycube-text-secondary">/month</span>
+              <span className="text-easycube-text-secondary">one-time</span>
             </div>
             <ul className="mt-6 space-y-2 text-sm text-easycube-text-secondary">
-              <li>Monthly subscription, billed automatically</li>
+              <li>Registers your interest in the pilot program</li>
               <li>Visa and Mastercard accepted</li>
-              <li>BLE tags billed separately — contact us to order</li>
-              <li>Cancel anytime — effective end of billing period</li>
+              <li>Tag hardware billed separately after trial ends</li>
+              <li>
+                See{' '}
+                <a href="/pilot-trial" className="text-easycube-blue hover:underline">
+                  pilot trial terms
+                </a>{' '}
+                for full details
+              </li>
             </ul>
             <a
-              href="/#pricing"
+              href="/pilot-trial"
               className="mt-6 inline-block text-sm font-medium text-easycube-blue hover:underline"
             >
-              ← Back to pricing
+              ← Back to pilot trial
             </a>
           </aside>
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { formatSgd, PILOT_MONTHLY_SGD } from '../lib/pricing'
+import { formatSgd, PILOT_DEPOSIT_SGD } from '../lib/pricing'
 
 type SessionDetails = {
   email: string | null
   plan: string
+  type: string
 }
 
 export default function SubscribeSuccess() {
@@ -48,14 +49,15 @@ export default function SubscribeSuccess() {
             </svg>
           </div>
           <h1 className="text-2xl font-bold text-easycube-navy">
-            Welcome to Easycube TAG Pilot!
+            Thank you — you&apos;re registered!
           </h1>
           <p className="mt-3 text-easycube-text-secondary">
-            Your subscription is active at {formatSgd(PILOT_MONTHLY_SGD)}/month.
+            Your {formatSgd(PILOT_DEPOSIT_SGD)} pilot registration deposit was
+            received.
             {loading
               ? ' Loading your details…'
               : details?.email
-                ? ` A confirmation will be sent to ${details.email}.`
+                ? ` A receipt will be sent to ${details.email}.`
                 : ' Check your email for a receipt from Stripe.'}
           </p>
 
@@ -64,18 +66,21 @@ export default function SubscribeSuccess() {
               <strong className="text-easycube-navy">What happens next</strong>
             </p>
             <ul className="list-disc space-y-2 pl-5">
-              <li>We will reach out within 1–2 business days to help with setup.</li>
               <li>
-                BLE tags and hardware are ordered separately — use our contact
-                form if you have not already.
+                We will contact you via WhatsApp or email with your setup date
+                (trial commences end of July).
               </li>
               <li>
-                Manage or cancel your subscription anytime on our{' '}
-                <a
-                  href="/subscription"
-                  className="font-medium text-easycube-blue hover:underline"
-                >
-                  Subscription page
+                Review the{' '}
+                <a href="/pilot-trial" className="text-easycube-blue hover:underline">
+                  pilot trial onboarding
+                </a>{' '}
+                page for billing and hardware details.
+              </li>
+              <li>
+                Questions? Use our{' '}
+                <a href="/#contact" className="text-easycube-blue hover:underline">
+                  contact form
                 </a>
                 .
               </li>
@@ -84,10 +89,10 @@ export default function SubscribeSuccess() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <a
-              href="/subscription"
+              href="/pilot-trial"
               className="rounded-lg bg-easycube-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-easycube-blue-dark"
             >
-              Manage subscription
+              View pilot trial info
             </a>
             <a
               href="/"

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getPilotPriceId, getSiteUrl, getStripe, validatePlan } from './shared.js'
+import { getPilotDepositPriceId, getSiteUrl, getStripe, validatePlan } from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -13,7 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'invalid_plan' })
     }
 
-    const priceId = getPilotPriceId()
+    const priceId = getPilotDepositPriceId()
     if (!priceId) {
       return res.status(500).json({ error: 'server_misconfigured' })
     }
@@ -23,11 +23,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'embedded_page',
-      mode: 'subscription',
+      mode: 'payment',
       line_items: [{ price: priceId, quantity: 1 }],
-      subscription_data: {
-        metadata: { plan: 'pilot' },
+      payment_intent_data: {
+        metadata: { plan: 'pilot', type: 'registration_deposit' },
       },
+      metadata: { plan: 'pilot', type: 'registration_deposit' },
       payment_method_types: ['card'],
       return_url: `${siteUrl}/subscribe/success?session_id={CHECKOUT_SESSION_ID}`,
     })

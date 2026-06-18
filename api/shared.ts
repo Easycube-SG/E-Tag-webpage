@@ -16,9 +16,15 @@ export function getStripe(): Stripe {
   return stripeClient
 }
 
+function normalizeSiteUrl(url: string): string {
+  const trimmed = url.replace(/\/$/, '')
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
+  return `https://${trimmed}`
+}
+
 export function getSiteUrl(req?: VercelRequest): string {
   if (process.env.SITE_URL) {
-    return process.env.SITE_URL.replace(/\/$/, '')
+    return normalizeSiteUrl(process.env.SITE_URL)
   }
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`
@@ -27,11 +33,12 @@ export function getSiteUrl(req?: VercelRequest): string {
   if (typeof origin === 'string') {
     return origin.replace(/\/$/, '')
   }
-  return 'http://localhost:5173'
+  return 'http://localhost:3001'
 }
 
-export function getPilotPriceId(): string | undefined {
-  return process.env.STRIPE_PRICE_PILOT
+/** One-time Pilot registration deposit (Stripe Price ID, type: one_time). */
+export function getPilotDepositPriceId(): string | undefined {
+  return process.env.STRIPE_PRICE_PILOT_DEPOSIT
 }
 
 export function validatePlan(plan: unknown): plan is PlanId {
