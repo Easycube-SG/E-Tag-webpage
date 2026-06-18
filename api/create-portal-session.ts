@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getSiteUrl, getStripe, validateEmail } from './shared.js'
+import { enforceRateLimit } from './rateLimit.js'
+import { enforceAllowedOrigin, getSiteUrl, getStripe, validateEmail } from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -7,8 +8,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'method_not_allowed' })
   }
 
+  if (!enforceAllowedOrigin(req, res)) return
+
+  const email = validateEmail(req.body?.email)
+  if (
+    !(await enforceRateLimit(req, res, {
+      namespace: 'portal',
+      limit: 5,
+      identifier: email ?? undefined,
+    }))
+  ) {
+    return
+  }
+
   try {
-    const email = validateEmail(req.body?.email)
     if (!email) {
       return res.status(400).json({ error: 'invalid_email' })
     }

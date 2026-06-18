@@ -1,11 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getPilotDepositPriceId, getSiteUrl, getStripe, validatePlan } from './shared.js'
+import { enforceRateLimit } from './rateLimit.js'
+import {
+  enforceAllowedOrigin,
+  getPilotDepositPriceId,
+  getSiteUrl,
+  getStripe,
+  validatePlan,
+} from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST')
     return res.status(405).json({ error: 'method_not_allowed' })
   }
+
+  if (!enforceAllowedOrigin(req, res)) return
+  if (!(await enforceRateLimit(req, res, { namespace: 'checkout', limit: 10 }))) return
 
   try {
     const { plan } = req.body ?? {}

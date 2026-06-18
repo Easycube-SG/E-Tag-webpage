@@ -1,11 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getStripe } from './shared.js'
+import { enforceRateLimit } from './rateLimit.js'
+import { enforceAllowedOrigin, getStripe } from './shared.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET')
     return res.status(405).json({ error: 'method_not_allowed' })
   }
+
+  if (!enforceAllowedOrigin(req, res)) return
+  if (!(await enforceRateLimit(req, res, { namespace: 'session-lookup', limit: 20 }))) return
 
   const sessionId = req.query.session_id
   if (typeof sessionId !== 'string' || !sessionId.startsWith('cs_')) {

@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/**/*.ts": {
-      "includeFiles": "api/shared.ts"
+      "includeFiles": "api/{shared,rateLimit}.ts"
     }
   }
 }
