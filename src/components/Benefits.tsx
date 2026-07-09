@@ -1,4 +1,5 @@
 import CtaButton from './CtaButton'
+import productVideo from '../assets/ETAG-introduction.mp4'
 
 const benefits = [
   {
@@ -57,25 +58,21 @@ export default function Benefits() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-easycube-border bg-white p-4 shadow-sm sm:p-6">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <StatCard value="80%" label="Faster parcel retrieval" />
-              <StatCard value="$$" label="Take in more parcels" />
-              <StatCard value="3×" label="More parcels per hour" />
-              <StatCard value="24/7" label="Inventory visibility" />
+          <div className="flex justify-center lg:justify-end">
+            <div className="w-full max-w-[280px] overflow-hidden rounded-2xl border border-easycube-border bg-black shadow-lg sm:max-w-[320px]">
+              <video
+                className="aspect-[48/91] h-auto w-full object-contain"
+                controls
+                playsInline
+                preload="metadata"
+                aria-label="E.TAG product introduction video"
+              >
+                <source src={productVideo} type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-xl bg-easycube-blue-light p-4 text-center sm:p-6">
-      <p className="text-2xl font-bold text-easycube-blue sm:text-3xl">{value}</p>
-      <p className="mt-1 text-xs text-easycube-text-secondary sm:mt-2 sm:text-sm">{label}</p>
-    </div>
   )
 }
