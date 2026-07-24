@@ -59,6 +59,12 @@ export default function FooterCta({ showCta = true }: FooterCtaProps) {
             >
               Contact
             </a>
+            <a
+              href="/privacy"
+              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
+            >
+              Privacy
+            </a>
           </nav>
           <p className="text-sm text-easycube-text-secondary">
             &copy; {new Date().getFullYear()} Easycube TAG. All rights reserved.

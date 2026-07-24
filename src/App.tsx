@@ -11,6 +11,7 @@ import SubscribeSuccess from './components/SubscribeSuccess'
 import SubscriptionPage from './pages/SubscriptionPage'
 import CheckoutPage from './pages/CheckoutPage'
 import PilotTrialPage from './pages/PilotTrialPage'
+import PrivacyPage from './pages/PrivacyPage'
 
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
@@ -63,6 +64,14 @@ function App() {
     return (
       <AppShell>
         <PilotTrialPage />
+      </AppShell>
+    )
+  }
+
+  if (pathname === '/privacy') {
+    return (
+      <AppShell>
+        <PrivacyPage />
       </AppShell>
     )
   }

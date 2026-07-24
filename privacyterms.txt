@@ -1,0 +1,75 @@
+This Privacy Policy describes how Easycube SG ("we," "us," or "our") collects, uses, and handles information when you use our mobile application, Easycube TAG (the "App").
+
+By using the App, you agree to the collection and use of information in accordance with this policy.
+
+1. About the App
+Easycube is an enterprise operational tool designed to enhance last mile delivery service with connected Internet of Things (IoT) hardware devices and innovative design.
+
+2. Information We Collect
+A. Provisioned Account Data
+No In-App Registration: Users cannot self-register inside the App.
+
+Administrator-Created Accounts: Accounts are provisioned by our administrative team using your assigned corporate or personal email address. This email is used strictly for authentication, system security, and account management.
+
+B. Usage & Operational Data
+To evaluate system performance and improve operational workflows, we collect information about how and when the App is used:
+
+Task Timestamps: Logs of when specific tasks are performed (e.g., time and date of parcel scans or IoT device searches).
+
+Usage Patterns & System Telemetry: Information regarding feature usage frequency, session duration, workflow completion rates, and system diagnostic logs.
+
+C. Local Device Storage
+No Local Personal Data: The App does not store personal data or parcel logs locally on your mobile device. All task and usage data is securely transmitted to and stored on our servers.
+
+D. System & Hardware Permissions
+To perform core functions, the App requires access to the following permissions:
+
+Camera: Used exclusively for scanning parcel barcodes or QR codes.
+
+Bluetooth / Location Services: Required by the Android operating system to perform Bluetooth Low Energy (BLE) scanning to discover and connect with nearby IoT parcel-locating devices. We do not track, record, or store your physical GPS location history.
+
+3. How We Use Your Information
+We use the collected information solely for legitimate operational and business purposes:
+
+Core Functionality & Access Control: Authenticating provisioned user accounts and executing parcel activities via IoT hardware.
+
+Internal Evaluation & Workflow Optimization: Analyzing task completion timestamps and usage patterns to measure efficiency, optimize application workflows, and improve operational tools.
+
+System Diagnostics & Maintenance: Monitoring app stability, resolving technical issues, and ensuring platform security.
+
+4. Third-Party Services & Data Sharing
+No Data Monetization: We do not sell, rent, trade, or share your personal credentials, usage patterns, or operational logs with third parties for marketing or advertising purposes.
+
+System Infrastructure: Data may be processed by secure cloud hosting and infrastructure providers acting strictly on our behalf under strict confidentiality agreements.
+
+5. Data Security & Storage
+We implement strict technical and organizational safeguards to protect your information:
+
+Encryption in Transit: All data transmitted between the App, backend servers, and connected IoT devices is encrypted using modern protocols (TLS/HTTPS).
+
+Access Control: Usage logs and account information are accessible only by authorized internal administrators for operational evaluation and system support.
+
+6. Account Deletion and Data Retention
+A. Data Retention
+We retain usage data and task timestamps only as long as necessary to conduct internal evaluations, fulfill operational needs, or comply with record-keeping obligations.
+
+B. Account Deletion Requests
+In compliance with Google Play Developer Policies, you have the right to request the deletion of your account and associated personal identifiers:
+
+How to Request Deletion: Email us at easycubesg@gmail.com with the subject line "Account & Data Deletion Request."
+
+Processing: Upon receiving your request, we will deactivate your account and purge your email address and direct account associations from our active user database within 14 business days.
+
+7. Children’s Privacy
+The App is an enterprise operational tool and is not intended for use by children under the age of 13 (or 16 in certain jurisdictions). We do not knowingly collect personal data from or provision accounts for children.
+
+8. Changes to This Privacy Policy
+We may update this Privacy Policy to reflect changes in our operational practices. Any updates will be posted on this page with an updated "Last Updated" date.
+
+9. Contact Us
+If you have questions regarding this Privacy Policy or internal data practices, please contact:
+
+Developer / Company Name: Easycube SG
+Email: easycubesg@gmail.com
+
+Last Updated: 24 July 2026

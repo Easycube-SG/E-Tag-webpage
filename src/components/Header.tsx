@@ -3,7 +3,6 @@ import CtaButton from './CtaButton'
 
 const navLinks = [
   { label: 'Benefits', href: '/#benefits' },
-  { label: 'Workflow', href: '/#workflow' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Pilot trial', href: '/pilot-trial' },
   { label: 'Contact', href: '/#contact' },
