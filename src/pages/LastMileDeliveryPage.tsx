@@ -1,5 +1,6 @@
 import MerchantFlowChart from '../components/last-mile/MerchantFlowChart'
 import ShopperJourneyGrid from '../components/last-mile/ShopperJourneyGrid'
+import { BodyText, SplitHeading } from '../components/Typography'
 
 const merchantSteps = [
   {
@@ -55,7 +56,7 @@ const shopperSteps = [
     ),
   },
   {
-    title: '2. Visit Node',
+    title: '2. Visit Collection Point',
     description:
       'Shopper visits their nearest neighborhood collection point at their convenience.',
     icon: (
@@ -112,9 +113,13 @@ export default function LastMileDeliveryPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-easycube-blue">
             Last-Mile Delivery
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Empower your business, increasing cart conversion rate
-          </h1>
+          <SplitHeading
+            accent="Convert more carts"
+            rest="with last-mile delivery"
+            as="h1"
+            size="section"
+            className="mt-2"
+          />
           <div className="mx-auto mt-8 grid max-w-5xl gap-5 sm:grid-cols-3">
             {heroStats.map((item) => (
               <article
@@ -134,15 +139,10 @@ export default function LastMileDeliveryPage() {
         </header>
 
         <section className="mt-12 rounded-2xl border border-easycube-border bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-xl font-semibold text-easycube-navy">
-            How It Works &amp; Fulfillment Options
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-easycube-text-secondary">
-            EasyCube is built to integrate seamlessly with your existing
-            workflow. Your team continues using your current Order Management
-            System (OMS)—we simply automate the last-mile infrastructure with
-            24/7 tracking.
-          </p>
+          <SplitHeading accent="How it" rest="works" as="h2" size="card" />
+          <BodyText className="mt-3">
+            Keep your OMS. We automate last-mile nodes with 24/7 tracking.
+          </BodyText>
 
           <div className="mt-8">
             <MerchantFlowChart steps={merchantSteps} />
@@ -150,11 +150,10 @@ export default function LastMileDeliveryPage() {
 
           <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
             <p className="text-sm font-semibold text-amber-900">
-              Important Shipping Label Note
+              Print labels before drop-off
             </p>
             <p className="mt-2 text-sm text-amber-900/90">
-              Shipping labels must be printed by the merchant before drop-off.
-              Collection points are unable to assist with printing labels.
+              Collection points cannot print shipping labels for you.
             </p>
           </div>
 
@@ -169,14 +168,10 @@ export default function LastMileDeliveryPage() {
         </section>
 
         <section className="mt-8 rounded-2xl border border-easycube-border bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-xl font-semibold text-easycube-navy">
-            Shopper Collection — The Familiar Process
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-easycube-text-secondary">
-            EasyCube delivers a secure, hassle-free collection experience—from
-            the moment a shopper receives their PIN to the second they walk away
-            with their parcel.
-          </p>
+          <SplitHeading accent="Shopper collection" rest="made familiar" as="h2" size="card" />
+          <BodyText className="mt-3">
+            PIN to handover — secure, simple, and fully logged.
+          </BodyText>
 
           <ShopperJourneyGrid steps={shopperSteps} />
         </section>

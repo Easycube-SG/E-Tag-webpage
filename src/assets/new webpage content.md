@@ -2,7 +2,7 @@
 
 **Landing Page
 
-Hero Section**
+Hero Section** [new image - new-hero-image.png]
 
 - **Headline:** Hyper Local and Node to Node Delivery System
 - **Subheadline:** The first high-capacity, hyper-local exchange network in Singapore. Drop off and let buyers collect from the same point for as low as $1.20.

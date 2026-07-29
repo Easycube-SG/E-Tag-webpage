@@ -1,36 +1,37 @@
 import { useState } from 'react'
+import { BodyText, SplitHeading } from '../Typography'
 import advantageImage from '../../assets/Easycube adv.png'
 
 const features = [
   {
-    title: 'Beat Cart Abandonment',
-    description:
-      'Shoppers bail out during checkout because of high delivery costs. Offer a pickup option to retain your customers and boost conversion rates.',
+    accent: 'Beat',
+    title: 'cart abandonment',
+    description: 'Shipping costs drive >70% of drop-off. Offer pickup at checkout.',
   },
   {
-    title: 'End Self-Collection Issues',
-    description:
-      'You will no longer have to face constant visits to your residential or office locations.',
+    accent: 'End',
+    title: 'collection hassle',
+    description: 'Stop juggling home and office handovers. We run the node.',
   },
   {
-    title: 'Deliver within 24 hours',
-    description:
-      'We provide delivery within 24 hours upon pickup of the parcel.',
+    accent: 'Deliver',
+    title: 'within 24 hours',
+    description: 'Parcels move to collection points the day after pickup.',
   },
   {
-    title: 'Zero Interference',
-    description:
-      'Our smart system provides a smooth handshake for delivery at your office and at the self-collection point.',
+    accent: 'Zero',
+    title: 'interference',
+    description: 'A digital handshake from your desk to the collection point.',
   },
   {
-    title: 'Automated SMS Handshake',
-    description:
-      'When you drop off, the system instantly texts the buyer a secure PIN for collection.',
+    accent: 'Automated',
+    title: 'SMS PIN',
+    description: 'Buyers get a secure PIN the moment their parcel arrives.',
   },
   {
-    title: 'Extended Hours',
-    description:
-      'Collection points operate from morning until late (8 AM – 11 PM), giving office workers the flexibility to collect after work.',
+    accent: 'Extended',
+    title: 'collection hours',
+    description: 'Nodes open 8 AM – 11 PM so buyers collect after work.',
   },
 ]
 
@@ -71,9 +72,7 @@ export default function EasyCubeAdvantage() {
     <section id="advantage" className="bg-[#0a1628] py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            The EasyCube Advantage
-          </h2>
+          <SplitHeading accent="The EasyCube" rest="advantage" onDark />
         </div>
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -97,15 +96,20 @@ export default function EasyCubeAdvantage() {
                     aria-expanded={isOpen}
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                   >
-                    <span className="text-lg font-semibold text-white sm:text-xl">
-                      {feature.title}
-                    </span>
+                    <SplitHeading
+                      accent={feature.accent}
+                      rest={feature.title}
+                      as="span"
+                      size="card"
+                      onDark
+                      className="text-left text-lg sm:text-xl"
+                    />
                     <AccordionIcon open={isOpen} />
                   </button>
                   {isOpen && (
-                    <p className="pb-6 text-base leading-relaxed text-white/75">
+                    <BodyText invert className="pb-6">
                       {feature.description}
-                    </p>
+                    </BodyText>
                   )}
                   <div
                     className="h-px bg-gradient-to-r from-pink-500/50 via-purple-500/40 to-easycube-blue/60"

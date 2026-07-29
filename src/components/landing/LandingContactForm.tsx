@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { LeadText, SplitHeading } from '../Typography'
 import { submitLandingContactToGoogleForm } from '../../lib/googleForm'
 
 type FormData = {
@@ -75,12 +76,10 @@ export default function LandingContactForm() {
     <section id="contact" className="bg-easycube-bg py-16 sm:py-24">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Contact us
-          </h2>
-          <p className="mt-4 text-lg text-easycube-text-secondary">
-            Tell us about your business and we&apos;ll get in touch.
-          </p>
+          <SplitHeading accent="Contact" rest="us" />
+          <LeadText className="mt-4">
+            Tell us about your business. We&apos;ll reply within 1–2 days.
+          </LeadText>
         </div>
 
         <form

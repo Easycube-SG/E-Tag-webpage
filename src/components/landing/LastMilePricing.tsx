@@ -1,26 +1,30 @@
+import { BodyText, LeadText, SplitHeading } from '../Typography'
+
 const tiers = [
   {
-    name: 'Same-Point Drop & Collect at Node',
-    badge: 'The Hero Offer',
-    bestFor: 'HBBs selling within their own estate or neighborhood.',
+    accent: 'Same-point',
+    name: 'drop & collect',
+    badge: 'Hero offer',
+    bestFor: 'HBBs selling within their estate.',
     price: 'S$1.20',
     period: 'per parcel',
     features: [
-      'Businesses Drop parcels at our collection point',
-      'Auto notification for shoppers',
+      'Drop at your local collection point',
+      'Auto shopper notification',
       'E-proof of delivery',
     ],
     highlighted: true,
   },
   {
-    name: 'Doorstep Pick-Up to Node',
-    bestFor: 'Merchants who need doorstep pickup to a nearby collection node.',
+    accent: 'Doorstep pickup',
+    name: 'to collection point',
+    bestFor: 'Merchants who need fleet pickup to a nearby node.',
     price: 'S$2.20',
     period: 'per parcel',
     features: [
-      'Easycube Fleet pick up',
-      'Drop parcels at at our collection point',
-      'Auto notification for shoppers',
+      'Easycube fleet pickup',
+      'Drop at collection point within 24h',
+      'Auto shopper notification',
       'E-proof of delivery',
     ],
     highlighted: false,
@@ -32,15 +36,13 @@ export default function LastMilePricing() {
     <section id="pricing" className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Pricing
-          </h2>
-          <p className="mt-4 text-lg text-easycube-text-secondary">
-            Simple per-parcel pricing for hyper-local delivery.{' '}
+          <SplitHeading accent="Simple" rest="pricing" />
+          <LeadText className="mt-4">
+            Per parcel. No subscriptions.{' '}
             <a href="/last-mile-delivery" className="font-medium text-easycube-blue hover:underline">
-              Learn how it works
+              See how it works
             </a>
-          </p>
+          </LeadText>
         </div>
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {tiers.map((tier) => (
@@ -53,7 +55,7 @@ export default function LastMilePricing() {
               }`}
             >
               {tier.highlighted && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-easycube-blue px-4 py-1 text-xs font-semibold text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-easycube-blue px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                   {tier.badge}
                 </span>
               )}
@@ -70,13 +72,17 @@ export default function LastMilePricing() {
                   {tier.period}
                 </p>
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-easycube-navy sm:text-xl">
-                {tier.name}
-              </h3>
-              <p className="mt-2 text-sm text-easycube-text-secondary">
-                <strong className="text-easycube-navy">Best for:</strong>{' '}
+              <SplitHeading
+                accent={tier.accent}
+                rest={tier.name}
+                as="h3"
+                size="card"
+                className="mt-5 capitalize"
+              />
+              <BodyText className="mt-2">
+                <span className="font-semibold text-easycube-navy">Best for:</span>{' '}
                 {tier.bestFor}
-              </p>
+              </BodyText>
               <ul className="mt-6 flex-1 space-y-2">
                 {tier.features.map((feature) => (
                   <li

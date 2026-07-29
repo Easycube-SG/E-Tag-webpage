@@ -111,6 +111,16 @@ export default function MerchantFlowChart({ steps }: MerchantFlowChartProps) {
             >
               <path d="M0 0 L8 4 L0 8 Z" fill={PATH_COLOR} />
             </marker>
+            <marker
+              id="flow-arrow-up"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+              orient="auto"
+            >
+              <path d="M0 8 L8 4 L0 0 Z" fill={PATH_COLOR} />
+            </marker>
           </defs>
 
           <path
@@ -125,16 +135,21 @@ export default function MerchantFlowChart({ steps }: MerchantFlowChartProps) {
           <circle cx="24" cy={MID_Y} r="10" fill={PATH_COLOR} />
           <circle cx={END_X} cy={MID_Y} r="10" fill={PATH_COLOR} />
 
-          {[192, 360, 528, 696].map((x) => (
+          {[
+            { x: 192, y1: 132, y2: 152, marker: 'flow-arrow-down' },
+            { x: 360, y1: 172, y2: 132, marker: 'flow-arrow-up' },
+            { x: 528, y1: 132, y2: 152, marker: 'flow-arrow-down' },
+            { x: 696, y1: 172, y2: 132, marker: 'flow-arrow-up' },
+          ].map((arrow) => (
             <line
-              key={x}
-              x1={x}
-              y1={140}
-              x2={x}
-              y2={158}
+              key={arrow.x}
+              x1={arrow.x}
+              y1={arrow.y1}
+              x2={arrow.x}
+              y2={arrow.y2}
               stroke={PATH_COLOR}
               strokeWidth="3"
-              markerEnd="url(#flow-arrow-down)"
+              markerEnd={`url(#${arrow.marker})`}
             />
           ))}
         </svg>

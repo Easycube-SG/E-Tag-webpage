@@ -1,4 +1,5 @@
 import CtaButton from './CtaButton'
+import { LeadText, SplitHeading } from './Typography'
 import type { HeaderVariant } from '../lib/nav'
 
 type FooterCtaProps = {
@@ -17,16 +18,21 @@ export default function FooterCta({
       {showCta && (
         <section className="bg-easycube-navy py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              {isAutonomousStation
-                ? 'Ready to transform your parcel operations?'
-                : 'Ready to deliver smarter?'}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              {isAutonomousStation
-                ? 'Join shops that are already saving time and delighting customers with Easycube TAG.'
-                : 'Join merchants using EasyCube for hyper-local delivery across Singapore.'}
-            </p>
+            {isAutonomousStation ? (
+              <>
+                <SplitHeading accent="Ready to transform" rest="your parcel ops?" onDark />
+                <LeadText invert className="mx-auto mt-4 max-w-2xl">
+                  Join shops saving time with Easycube TAG.
+                </LeadText>
+              </>
+            ) : (
+              <>
+                <SplitHeading accent="Ready to deliver" rest="smarter?" onDark />
+                <LeadText invert className="mx-auto mt-4 max-w-2xl">
+                  Join merchants running hyper-local delivery across Singapore.
+                </LeadText>
+              </>
+            )}
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
               {isAutonomousStation ? (
                 <CtaButton href="/autonomous-station#contact">
