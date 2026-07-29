@@ -1,5 +1,5 @@
-import CtaButton from './CtaButton'
-import productVideo from '../assets/ETAG-introduction.mp4'
+import CtaButton from '../CtaButton'
+import productVideo from '../../assets/autonomous-station/ETAG-introduction.mp4'
 
 const benefits = [
   {
@@ -54,7 +54,7 @@ export default function Benefits() {
             </ul>
 
             <div className="mt-10">
-              <CtaButton>Start Your Trial Now</CtaButton>
+              <CtaButton href="/autonomous-station#contact">Request a Demo</CtaButton>
             </div>
           </div>
 

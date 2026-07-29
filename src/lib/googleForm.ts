@@ -19,6 +19,14 @@ export type ContactFormPayload = {
   email: string
 }
 
+export type LandingContactFormPayload = {
+  name: string
+  shopName: string
+  position: string
+  contactNo: string
+  email: string
+}
+
 export async function submitToGoogleForm(data: ContactFormPayload): Promise<void> {
   const body = new URLSearchParams({
     emailAddress: data.email,
@@ -26,6 +34,30 @@ export async function submitToGoogleForm(data: ContactFormPayload): Promise<void
     [FIELD_IDS.shopName]: data.shopName,
     [FIELD_IDS.address]: data.address,
     [FIELD_IDS.dailyParcels]: data.dailyParcels,
+    [FIELD_IDS.contactNo]: data.contactNo,
+    [FIELD_IDS.email]: data.email,
+    fvv: '1',
+    pageHistory: '0',
+  })
+
+  await fetch(GOOGLE_FORM_ACTION, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  })
+}
+
+export async function submitLandingContactToGoogleForm(
+  data: LandingContactFormPayload,
+): Promise<void> {
+  const body = new URLSearchParams({
+    emailAddress: data.email,
+    [FIELD_IDS.name]: data.name,
+    [FIELD_IDS.shopName]: data.shopName,
+    [FIELD_IDS.address]: data.position,
     [FIELD_IDS.contactNo]: data.contactNo,
     [FIELD_IDS.email]: data.email,
     fvv: '1',

@@ -1,17 +1,10 @@
 import { useState, type FormEvent } from 'react'
-import { submitToGoogleForm } from '../lib/googleForm'
-
-const dailyParcelOptions = [
-  '0 - 200 parcels',
-  '201 - 400 parcels',
-  'Over 400 parcels',
-]
+import { submitLandingContactToGoogleForm } from '../../lib/googleForm'
 
 type FormData = {
   name: string
   shopName: string
-  address: string
-  dailyParcels: string
+  position: string
   contactNo: string
   email: string
 }
@@ -19,22 +12,22 @@ type FormData = {
 const initialForm: FormData = {
   name: '',
   shopName: '',
-  address: '',
-  dailyParcels: '',
+  position: '',
   contactNo: '',
   email: '',
 }
 
-export default function ContactForm() {
+const inputClass =
+  'w-full rounded-lg border border-easycube-border bg-white px-4 py-2.5 text-sm text-easycube-text placeholder:text-easycube-text-secondary/60 focus:border-easycube-blue focus:outline-none focus:ring-2 focus:ring-easycube-blue/20 disabled:cursor-not-allowed disabled:opacity-60'
+
+export default function LandingContactForm() {
   const [form, setForm] = useState<FormData>(initialForm)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
@@ -46,7 +39,7 @@ export default function ContactForm() {
     setError(null)
 
     try {
-      await submitToGoogleForm(form)
+      await submitLandingContactToGoogleForm(form)
       setSubmitted(true)
     } catch {
       setError('Something went wrong. Please try again or contact us directly.')
@@ -86,8 +79,7 @@ export default function ContactForm() {
             Contact us
           </h2>
           <p className="mt-4 text-lg text-easycube-text-secondary">
-            Tell us about your shop and we&apos;ll recommend the right setup for
-            your parcel volume.
+            Tell us about your business and we&apos;ll get in touch.
           </p>
         </div>
 
@@ -125,39 +117,18 @@ export default function ContactForm() {
             </Field>
           </div>
 
-          <Field label="Address" htmlFor="address" required>
-            <textarea
-              id="address"
-              name="address"
+          <Field label="Position" htmlFor="position" required>
+            <input
+              id="position"
+              name="position"
+              type="text"
               required
               disabled={submitting}
-              rows={3}
-              value={form.address}
+              value={form.position}
               onChange={handleChange}
               className={inputClass}
-              placeholder="Shop address"
+              placeholder="E.g. Manager"
             />
-          </Field>
-
-          <Field label="Daily Parcels" htmlFor="dailyParcels" required>
-            <select
-              id="dailyParcels"
-              name="dailyParcels"
-              required
-              disabled={submitting}
-              value={form.dailyParcels}
-              onChange={handleChange}
-              className={inputClass}
-            >
-              <option value="" disabled>
-                Select daily parcel volume
-              </option>
-              {dailyParcelOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
           </Field>
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -185,7 +156,7 @@ export default function ContactForm() {
                 value={form.email}
                 onChange={handleChange}
                 className={inputClass}
-                placeholder="you@shop.com"
+                placeholder="you@business.com"
               />
             </Field>
           </div>
@@ -208,9 +179,6 @@ export default function ContactForm() {
     </section>
   )
 }
-
-const inputClass =
-  'w-full rounded-lg border border-easycube-border bg-white px-4 py-2.5 text-sm text-easycube-text placeholder:text-easycube-text-secondary/60 focus:border-easycube-blue focus:outline-none focus:ring-2 focus:ring-easycube-blue/20 disabled:cursor-not-allowed disabled:opacity-60'
 
 function Field({
   label,

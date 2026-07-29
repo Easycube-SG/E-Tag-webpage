@@ -1,9 +1,9 @@
-import CtaButton from './CtaButton'
+import CtaButton from '../CtaButton'
 
 const eyebrow = 'Easycube TAG - E.TAG'
-const headline = 'Tag, track, and retrieve parcels in seconds'
+const headline = 'Collect parcels in split seconds'
 const subline =
-  'Easycube TAG links every parcel to a SMART tag. Working with your existing Collection Point App (SPX / NinjaPoint)'
+  'Enhance your collection point with our Smart E.Tag'
 
 const mobileBtnClass = '!w-auto shrink-0 px-3.5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm'
 
@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Mobile: compact text column on the left, product visible on the right */}
       <div className="relative min-h-[300px] md:hidden">
         <img
-          src="/heropage_mobile.png"
+          src="/autonomous-station/heropage_mobile.png"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-contain object-[center_right]"
@@ -30,7 +30,7 @@ export default function Hero() {
               {subline}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <CtaButton className={mobileBtnClass}>Request a Demo</CtaButton>
+              <CtaButton href="/autonomous-station#contact" className={mobileBtnClass}>Request a Demo</CtaButton>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function Hero() {
       {/* Desktop: full overlay layout */}
       <div className="relative hidden w-full md:block">
         <img
-          src="/heropage.png"
+          src="/autonomous-station/heropage.png"
           alt="Easycube TAG smart parcel tagging system in a retail shop"
           className="block h-auto w-full min-h-[360px] object-cover lg:min-h-[480px]"
         />
@@ -56,8 +56,8 @@ export default function Hero() {
                 {subline}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <CtaButton className="!w-auto">Request a Demo</CtaButton>
-                <CtaButton href="#workflow" variant="secondary" className="!w-auto">
+                <CtaButton href="/autonomous-station#contact" className="!w-auto">Request a Demo</CtaButton>
+                <CtaButton href="/autonomous-station#workflow" variant="secondary" className="!w-auto">
                   See How It Works
                 </CtaButton>
               </div>

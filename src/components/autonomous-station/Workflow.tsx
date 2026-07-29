@@ -1,4 +1,4 @@
-import workflowImage from '../assets/Workflow.png'
+import workflowImage from '../../assets/autonomous-station/Workflow.png'
 
 const steps = [
   {

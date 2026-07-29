@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import CtaButton from './CtaButton'
+import { getHeaderCta, siteNavLinks, type HeaderVariant } from '../lib/nav'
 
-const navLinks = [
-  { label: 'Benefits', href: '/#benefits' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'Pilot trial', href: '/pilot-trial' },
-  { label: 'Contact', href: '/#contact' },
-]
+type HeaderProps = {
+  variant?: HeaderVariant
+}
 
-export default function Header() {
+export default function Header({ variant = 'site' }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const cta = getHeaderCta(variant)
 
   return (
     <header className="sticky top-0 z-50 border-b border-easycube-border bg-white/95 backdrop-blur-sm">
@@ -17,16 +16,20 @@ export default function Header() {
         <a href="/" className="flex items-center gap-2">
           <img
             src="/easycube_logo.png"
-            alt="Easycube TAG"
+            alt="Easycube"
             className="h-10 w-auto"
           />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+          {siteNavLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={
+                link.label === 'Contact' && variant === 'autonomous-station'
+                  ? '/autonomous-station#contact'
+                  : link.href
+              }
               className="text-sm font-medium text-easycube-text-secondary transition-colors hover:text-easycube-blue"
             >
               {link.label}
@@ -35,7 +38,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <CtaButton href="/#pricing">Get Started</CtaButton>
+          <CtaButton href={cta.href}>{cta.label}</CtaButton>
         </div>
 
         <button
@@ -72,18 +75,22 @@ export default function Header() {
       {menuOpen && (
         <div className="border-t border-easycube-border bg-white px-4 py-4 md:hidden">
           <nav className="flex flex-col gap-3">
-            {navLinks.map((link) => (
+            {siteNavLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={
+                  link.label === 'Contact' && variant === 'autonomous-station'
+                    ? '/autonomous-station#contact'
+                    : link.href
+                }
                 className="rounded-md px-2 py-2 text-sm font-medium text-easycube-text-secondary hover:bg-easycube-muted hover:text-easycube-blue"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <CtaButton href="/#pricing" className="mt-2 w-full">
-              Get Started
+            <CtaButton href={cta.href} className="mt-2 w-full">
+              {cta.label}
             </CtaButton>
           </nav>
         </div>

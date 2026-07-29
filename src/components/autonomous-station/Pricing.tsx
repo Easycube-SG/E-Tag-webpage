@@ -13,9 +13,9 @@ const plans: {
   {
     id: 'pilot',
     name: 'Pilot',
-    price: 'Flat Rate',
+    price: '$19/mth',
     period: '',
-    description: 'Be our first early partners to try Easycube TAG at a reduced usage rate.',
+    description: 'Flat rate for up to 300 tags',
     features: [
       '1 gateway device',
       'Inbound & outbound workflows',
@@ -27,14 +27,14 @@ const plans: {
   {
     id: 'standard',
     name: 'Standard',
-    price: 'Tiered Pricing',
+    price: '$19 per 100 tags/ mth',
     period: '',
     description: 'For small shops handling up to 500 parcels daily.',
     features: [
       '1 gateway device',
-      'Inbound & outbound workflows',
-      'Basic inventory view',
-      'Billed on usage — contact us to get started',
+      'Tiered based pricing',
+      'For reference: $19/mth for 100 tags, $38/mth for 200 tags',
+      'Detailed inventory view',
     ],
     highlighted: false,
     checkout: false,
@@ -144,7 +144,7 @@ export default function Pricing() {
                 </a>
               ) : (
                 <a
-                  href="#contact"
+                  href="/autonomous-station#contact"
                   className={`mt-8 block rounded-lg py-3 text-center text-sm font-semibold transition-colors ${
                     plan.id === 'enterprise'
                       ? 'border border-easycube-border text-easycube-navy hover:border-easycube-blue hover:text-easycube-blue'

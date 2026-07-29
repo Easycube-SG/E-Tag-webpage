@@ -1,26 +1,10 @@
 import { useState } from 'react'
-import {
-  formatCentsPerParcel,
-  formatSgd,
-  PILOT_DEPOSIT_SGD,
-  PILOT_PARCEL_CENTS,
-  STANDARD_PARCEL_CENTS,
-} from '../lib/pricing'
 
 const faqs = [
   {
-    question: 'How does billing work?',
-    answer: `Usage is billed per parcel tracked — Pilot at ${formatCentsPerParcel(PILOT_PARCEL_CENTS)} per parcel, Standard at ${formatCentsPerParcel(STANDARD_PARCEL_CENTS)} per parcel. Pilot trialists pay a one-time ${formatSgd(PILOT_DEPOSIT_SGD)} deposit online to register interest (see our Pilot trial page). Standard and Enterprise plans are arranged through our team.`,
-  },
-  {
-    question: 'How do I cancel or manage billing?',
-    answer:
-      'The pilot registration deposit is a one-time payment. Ongoing usage billing is arranged after the trial. If you have an active recurring subscription with us, visit the Subscription page (footer link) to open the Stripe billing portal.',
-  },
-  {
     question: 'What hardware do I need to get started?',
     answer:
-      'You need an Android gateway device (phone or tablet), BLE tags, and a Bluetooth advertiser unit. Contact us to order tags and hardware for your plan.',
+      'You need an Android gateway device (phone), BLE tags, and a Bluetooth advertiser unit. Contact us to order tags and hardware for your plan.',
   },
   {
     question: 'How long does setup take?',

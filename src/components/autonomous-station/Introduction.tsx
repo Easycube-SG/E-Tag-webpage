@@ -6,9 +6,9 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
       </svg>
     ),
-    title: 'Scan & Tag Parcels',
+    title: 'Automate Manual Search and Sort',
     description:
-      'Scan a parcel barcode and assign a BLE tag within seconds, no more sorting by hand.',
+      'Digitalise with our BLE tag and find your inventory in seconds.',
   },
   {
     icon: (
@@ -16,9 +16,9 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
       </svg>
     ),
-    title: 'Never leave the counter',
+    title: 'Light and Sound guidance',
     description:
-      'When a customer arrives, search by parcel ID and let the LED tag guide them straight to the shelf.',
+      'Key in PIN and activate PIN. Your or customer can follow the light and sound guidance to find the parcel.',
   },
   {
     icon: (
