@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { BodyText, SplitHeading } from '../Typography'
+import deliveryMockup from '../../assets/desired delivery.png'
 
 type Audience = {
   accent: string
@@ -8,10 +9,16 @@ type Audience = {
   icon: ReactNode
 }
 
+type AudienceText = {
+  accent: string
+  title: string
+  description: string
+}
+
 const audiences = {
   homeSellers: {
-    accent: 'Your dedicated drop-off point',
-    title: 'for home sellers',
+    accent: 'Your dedicated',
+    title: 'drop-off point',
     description: 'Drop off and collect at our collection point (within 5min walk to MRT or bus interchange) in your neighbourhood',
     icon: (
       <svg className="h-10 w-10 text-easycube-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden>
@@ -20,9 +27,9 @@ const audiences = {
     ),
   },
   logistics: {
-    accent: 'Automated nodes',
-    title: 'for logistics partners',
-    description: 'Run collection points with less manual sorting and handover.',
+    accent: 'Next Day',
+    title: 'Delivery',
+    description: 'Our Hyper-Local delivery allow us to provide the fastest delivery option for your customers.',
     icon: (
       <svg className="h-10 w-10 text-easycube-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden>
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
@@ -32,14 +39,10 @@ const audiences = {
   converts: {
     accent: 'Delivery that',
     title: 'bring more business',
-    description: 'Provide the best shipping option for your customers, reduce your min spending and convert more sales.',
-    icon: (
-      <svg className="h-10 w-10 text-easycube-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 0h13.5" />
-      </svg>
-    ),
+    description:
+      'Provide the best shipping option for your customers, reduce your min spending and convert more sales.',
   },
-} satisfies Record<string, Audience>
+} satisfies Record<string, AudienceText & { icon?: ReactNode }>
 
 function CardVisual({ icon }: { icon: ReactNode }) {
   return (
@@ -78,6 +81,23 @@ function BentoCard({
   )
 }
 
+function DeliveryFeatureCard({ item }: { item: AudienceText }) {
+  return (
+    <article className="grid min-h-0 grid-cols-1 items-center gap-6 lg:grid-cols-[25fr_75fr] lg:gap-10">
+      <div className="min-w-0 self-center lg:pr-4">
+        <SplitHeading accent={item.accent} rest={item.title} as="h3" size="card" />
+        <BodyText className="mt-4">{item.description}</BodyText>
+      </div>
+
+      <img
+        src={deliveryMockup}
+        alt="Checkout screen showing self-collection as a free local delivery option"
+        className="h-auto w-full object-contain"
+      />
+    </article>
+  )
+}
+
 export default function WorkWithUs() {
   return (
     <section id="work-with-us" className="bg-white py-16 sm:py-24">
@@ -87,11 +107,11 @@ export default function WorkWithUs() {
         </div>
 
         <div className="mt-14 space-y-5">
-          <div className="grid gap-5 lg:grid-cols-10">
-            <BentoCard item={audiences.homeSellers} className="lg:col-span-6" />
-            <BentoCard item={audiences.logistics} className="lg:col-span-4" />
+          <div className="grid gap-5 lg:grid-cols-2">
+            <BentoCard item={audiences.homeSellers} />
+            <BentoCard item={audiences.logistics} />
           </div>
-          <BentoCard item={audiences.converts} />
+          <DeliveryFeatureCard item={audiences.converts} />
         </div>
       </div>
     </section>
