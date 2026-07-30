@@ -6,12 +6,17 @@ const features = [
   {
     accent: 'Beat',
     title: 'cart abandonment',
-    description: 'Shipping costs drive >70% of drop-off. Offer pickup at checkout.',
+    description: 'Shipping costs drive >70% of drop-off. Offering pickup at checkout for little to no min spending to attract your customers.',
+  },
+  {
+    accent: 'Extended',
+    title: 'collection hours',
+    description: 'Retail opening hours so buyers collect after work.',
   },
   {
     accent: 'End',
     title: 'collection hassle',
-    description: 'Stop juggling home and office handovers. We run the node.',
+    description: 'Stop juggling home and office handovers. Leave the last mile logistics to us.',
   },
   {
     accent: 'Deliver',
@@ -21,17 +26,12 @@ const features = [
   {
     accent: 'Zero',
     title: 'interference',
-    description: 'A digital handshake from your desk to the collection point.',
+    description: 'Your customer will get to pick up their parcel via our autonomous station.',
   },
   {
     accent: 'Automated',
     title: 'SMS PIN',
     description: 'Buyers get a secure PIN the moment their parcel arrives.',
-  },
-  {
-    accent: 'Extended',
-    title: 'collection hours',
-    description: 'Nodes open 8 AM – 11 PM so buyers collect after work.',
   },
 ]
 

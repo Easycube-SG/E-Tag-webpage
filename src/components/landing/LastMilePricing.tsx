@@ -36,7 +36,7 @@ export default function LastMilePricing() {
     <section id="pricing" className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <SplitHeading accent="Simple" rest="pricing" />
+          <SplitHeading accent="Transparent" rest="pricing" />
           <LeadText className="mt-4">
             Per parcel. No subscriptions.{' '}
             <a href="/last-mile-delivery" className="font-medium text-easycube-blue hover:underline">

@@ -1,4 +1,3 @@
-import CtaButton from '../CtaButton'
 import { LeadText, SplitHeading } from '../Typography'
 import heroImage from '../../assets/new-hero-image.png'
 
@@ -30,11 +29,6 @@ export default function LandingHero() {
           <LeadText invert className="mt-6 drop-shadow-sm">
             Singapore&apos;s node-to-node network. Drop off once. Collect at the same point.
           </LeadText>
-          <div className="mt-8">
-            <CtaButton href="/#contact" className="!w-auto">
-              Deliver now
-            </CtaButton>
-          </div>
         </div>
       </div>
     </section>

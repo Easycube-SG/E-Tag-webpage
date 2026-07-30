@@ -16,45 +16,50 @@ const PATH_COLOR = '#1976d2'
 const TOP_RAIL = 110
 const BOTTOM_RAIL = 210
 const MID_Y = 160
-const END_X = 864
+const H_PAD = 80
+const START_X = H_PAD
+const END_X = VIEW_WIDTH - H_PAD
 
-// Snake path — start and end both drop straight from centre rail
+// Snake path — symmetric horizontal padding in viewBox
 const FLOW_PATH = `
-  M 24 ${MID_Y}
+  M ${START_X} ${MID_Y}
   V 126
-  Q 24 ${TOP_RAIL} 40 ${TOP_RAIL}
-  H 176
-  Q 192 ${TOP_RAIL} 192 126
+  Q ${START_X} ${TOP_RAIL} ${START_X + 16} ${TOP_RAIL}
+  H ${START_X + 152}
+  Q ${START_X + 168} ${TOP_RAIL} ${START_X + 168} 126
   V 154
   V 194
-  Q 192 ${BOTTOM_RAIL} 208 ${BOTTOM_RAIL}
-  H 344
-  Q 360 ${BOTTOM_RAIL} 360 194
+  Q ${START_X + 168} ${BOTTOM_RAIL} ${START_X + 184} ${BOTTOM_RAIL}
+  H ${START_X + 320}
+  Q ${START_X + 336} ${BOTTOM_RAIL} ${START_X + 336} 194
   V 154
   V 126
-  Q 360 ${TOP_RAIL} 376 ${TOP_RAIL}
-  H 512
-  Q 528 ${TOP_RAIL} 528 126
+  Q ${START_X + 336} ${TOP_RAIL} ${START_X + 352} ${TOP_RAIL}
+  H ${START_X + 488}
+  Q ${START_X + 504} ${TOP_RAIL} ${START_X + 504} 126
   V 154
   V 194
-  Q 528 ${BOTTOM_RAIL} 544 ${BOTTOM_RAIL}
-  H 680
-  Q 696 ${BOTTOM_RAIL} 696 194
+  Q ${START_X + 504} ${BOTTOM_RAIL} ${START_X + 520} ${BOTTOM_RAIL}
+  H ${START_X + 656}
+  Q ${START_X + 672} ${BOTTOM_RAIL} ${START_X + 672} 194
   V 154
   V 126
-  Q 696 ${TOP_RAIL} 712 ${TOP_RAIL}
-  H 848
-  Q 864 ${TOP_RAIL} 864 126
+  Q ${START_X + 672} ${TOP_RAIL} ${START_X + 688} ${TOP_RAIL}
+  H ${END_X - 16}
+  Q ${END_X} ${TOP_RAIL} ${END_X} 126
   V ${MID_Y}
 `
 
+// Segment centres as % of viewBox width
 const labelPositions = [
-  { x: 10.8, y: 'top' as const },
-  { x: 27.6, y: 'bottom' as const },
-  { x: 44.4, y: 'top' as const },
-  { x: 61.2, y: 'bottom' as const },
-  { x: 78, y: 'top' as const },
+  { x: 16.4, y: 'top' as const },
+  { x: 33.2, y: 'bottom' as const },
+  { x: 50, y: 'top' as const },
+  { x: 66.8, y: 'bottom' as const },
+  { x: 83.6, y: 'top' as const },
 ]
+
+const ARROW_X = [START_X + 168, START_X + 336, START_X + 504, START_X + 672]
 
 const TOP_ZONE_HEIGHT = `${(((TOP_RAIL - 10) / VIEW_HEIGHT) * 100).toFixed(2)}%`
 const BOTTOM_ZONE_HEIGHT = `${(((VIEW_HEIGHT - BOTTOM_RAIL - 10) / VIEW_HEIGHT) * 100).toFixed(2)}%`
@@ -92,7 +97,7 @@ export default function MerchantFlowChart({ steps }: MerchantFlowChartProps) {
       </div>
 
       <div
-        className="relative hidden md:block"
+        className="relative mx-auto hidden max-w-5xl px-2 md:block"
         style={{ aspectRatio: `${VIEW_WIDTH} / ${VIEW_HEIGHT}` }}
       >
         <svg
@@ -132,14 +137,14 @@ export default function MerchantFlowChart({ steps }: MerchantFlowChartProps) {
             strokeLinejoin="round"
           />
 
-          <circle cx="24" cy={MID_Y} r="10" fill={PATH_COLOR} />
+          <circle cx={START_X} cy={MID_Y} r="10" fill={PATH_COLOR} />
           <circle cx={END_X} cy={MID_Y} r="10" fill={PATH_COLOR} />
 
           {[
-            { x: 192, y1: 132, y2: 152, marker: 'flow-arrow-down' },
-            { x: 360, y1: 172, y2: 132, marker: 'flow-arrow-up' },
-            { x: 528, y1: 132, y2: 152, marker: 'flow-arrow-down' },
-            { x: 696, y1: 172, y2: 132, marker: 'flow-arrow-up' },
+            { x: ARROW_X[0], y1: 132, y2: 152, marker: 'flow-arrow-down' },
+            { x: ARROW_X[1], y1: 172, y2: 132, marker: 'flow-arrow-up' },
+            { x: ARROW_X[2], y1: 132, y2: 152, marker: 'flow-arrow-down' },
+            { x: ARROW_X[3], y1: 172, y2: 132, marker: 'flow-arrow-up' },
           ].map((arrow) => (
             <line
               key={arrow.x}

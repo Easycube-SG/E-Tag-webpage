@@ -101,7 +101,7 @@ export default function LandingContactForm() {
               />
             </Field>
 
-            <Field label="Shop Name" htmlFor="shopName" required>
+            <Field label="Business Name" htmlFor="shopName" required>
               <input
                 id="shopName"
                 name="shopName"
