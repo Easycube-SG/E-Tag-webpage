@@ -22,6 +22,7 @@ const tiers = [
     price: 'S$2.20',
     period: 'per parcel',
     features: [
+      'Min 5 parcels per delivery',
       'Easycube fleet pickup',
       'Drop at collection point within 24h',
       'Auto shopper notification',
