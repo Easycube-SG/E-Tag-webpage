@@ -5,7 +5,7 @@ export type NavLink = { label: string; href: string }
 export const siteNavLinks: NavLink[] = [
   { label: 'Last Mile Delivery', href: '/last-mile-delivery' },
   { label: 'Autonomous Station', href: '/autonomous-station' },
-  { label: 'Pilot trial', href: '/pilot-trial' },
+  { label: 'Station Pilot', href: '/pilot-trial' },
   { label: 'Contact', href: '/#contact' },
 ]
 

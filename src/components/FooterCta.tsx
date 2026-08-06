@@ -78,22 +78,10 @@ export default function FooterCta({
               Autonomous Station
             </a>
             <a
-              href="/pilot-trial"
-              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
-            >
-              Pilot trial
-            </a>
-            <a
               href="/subscription"
               className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
             >
               Subscription
-            </a>
-            <a
-              href={isAutonomousStation ? '/autonomous-station#contact' : '/#contact'}
-              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
-            >
-              Contact
             </a>
             <a
               href="/privacy"

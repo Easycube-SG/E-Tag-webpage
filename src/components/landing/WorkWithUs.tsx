@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { BodyText, SplitHeading } from '../Typography'
-import deliveryMockup from '../../assets/desired delivery.png'
+import deliveryMockup from '../../assets/pinmap.png'
+import checkoutOptionImage from '../../assets/Change in shipping.png'
 
 type Audience = {
   accent: string
@@ -37,10 +38,10 @@ const audiences = {
     ),
   },
   converts: {
-    accent: 'Delivery that',
-    title: 'bring more business',
+    accent: 'Convenient locations',
+    title: 'for your customers',
     description:
-      'Provide the best shipping option for your customers, reduce your min spending and convert more sales.',
+      'Carefully curated locations that make self collection easy',
   },
 } satisfies Record<string, AudienceText & { icon?: ReactNode }>
 
@@ -81,20 +82,62 @@ function BentoCard({
   )
 }
 
+const locations: { name: string; note?: string }[] = [
+  { name: '313 Somerset /The Centrepoint' },
+  { name: 'PLQ'},
+  { name: 'Lor 4 Toa Payoh', note: '5min walk to Braddell MRT' },
+  { name: 'Bukit Batok Central', note: 'next to Bukit Batok Interchange' },
+  { name: 'Jem Shopping Mall' },
+  { name: 'Beauty World' },
+  { name: 'Tampines Central 1' },
+  { name: 'Woodlands Ave 6', note: 'Outside Admiralty MRT' },
+]
+
+function LocationsGrid() {
+  return (
+    <ul className="mt-8 grid grid-cols-1 gap-px bg-easycube-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {locations.map((location) => (
+        <li key={location.name} className="min-w-0 bg-white px-4 py-5 sm:px-5 sm:py-6">
+          <p className="text-sm font-semibold leading-snug text-easycube-navy sm:text-base">
+            {location.name}
+          </p>
+          {location.note && (
+            <p className="mt-1 text-sm leading-snug text-easycube-text-secondary">
+              ({location.note})
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function DeliveryFeatureCard({ item }: { item: AudienceText }) {
   return (
-    <article className="grid min-h-0 grid-cols-1 items-center gap-6 lg:grid-cols-[25fr_75fr] lg:gap-10">
-      <div className="min-w-0 self-center lg:pr-4">
-        <SplitHeading accent={item.accent} rest={item.title} as="h3" size="card" />
-        <BodyText className="mt-4">{item.description}</BodyText>
-      </div>
+    <div>
+      <article className="grid min-h-0 grid-cols-1 items-center gap-6 lg:grid-cols-[25fr_75fr] lg:gap-10">
+        <div className="min-w-0 self-center lg:pr-4">
+          <SplitHeading accent={item.accent} rest={item.title} as="h3" size="card" />
+          <BodyText className="mt-4">{item.description}</BodyText>
+        </div>
 
-      <img
-        src={deliveryMockup}
-        alt="Checkout screen showing self-collection as a free local delivery option"
-        className="h-auto w-full object-contain"
-      />
-    </article>
+        <img
+          src={deliveryMockup}
+          alt="Map of Easycube collection points across Singapore"
+          className="h-auto w-full object-contain"
+        />
+      </article>
+      <LocationsGrid />
+
+      <div className="mt-14">
+        <SplitHeading accent="Add a new" rest="check out option" as="h3" size="card" />
+        <img
+          src={checkoutOptionImage}
+          alt="Before and after: self-collection shipping method upgraded with a locations dropdown"
+          className="mt-8 h-auto w-full object-contain"
+        />
+      </div>
+    </div>
   )
 }
 

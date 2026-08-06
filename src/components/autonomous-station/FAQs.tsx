@@ -7,6 +7,11 @@ const faqs = [
       'You need an Android gateway device (phone), BLE tags, and a Bluetooth advertiser unit. Contact us to order tags and hardware for your plan.',
   },
   {
+    question: 'How long is the parcel held?',
+    answer:
+      'Parcel are held for 3 days.',
+  },
+  {
     question: 'How long does setup take?',
     answer:
       'Most shops complete setup in under an hour. Pair your Bluetooth device, register tags, and your team can start scanning parcels immediately.',

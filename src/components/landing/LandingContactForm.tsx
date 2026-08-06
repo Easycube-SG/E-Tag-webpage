@@ -78,7 +78,7 @@ export default function LandingContactForm() {
         <div className="text-center">
           <SplitHeading accent="Contact" rest="us" />
           <LeadText className="mt-4">
-            Tell us about your business. We&apos;ll reply within 1–2 days.
+            Transform your business today!
           </LeadText>
         </div>
 
