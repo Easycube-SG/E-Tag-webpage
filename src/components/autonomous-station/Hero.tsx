@@ -1,9 +1,9 @@
 import CtaButton from '../CtaButton'
 
-const eyebrow = 'Easycube TAG - E.TAG'
-const headline = 'Collect parcels in split seconds'
+const eyebrow = 'Easycube SG - Connect your inventory'
+const headline = 'Make Every Warehouse Searchable'
 const subline =
-  'Enhance your collection point with our Smart E.Tag'
+  'Find any item. By anyone. From your phone.'
 
 const mobileBtnClass = '!w-auto shrink-0 px-3.5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm'
 
@@ -30,7 +30,7 @@ export default function Hero() {
               {subline}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <CtaButton href="/autonomous-station#contact" className={mobileBtnClass}>Request a Demo</CtaButton>
+              <CtaButton href="/#contact" className={mobileBtnClass}>Request a Demo</CtaButton>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function Hero() {
                 {subline}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <CtaButton href="/autonomous-station#contact" className="!w-auto">Request a Demo</CtaButton>
+                <CtaButton href="/#contact" className="!w-auto">Join Pilot</CtaButton>
                 <CtaButton href="/autonomous-station#workflow" variant="secondary" className="!w-auto">
                   See How It Works
                 </CtaButton>

@@ -3,19 +3,19 @@ import productVideo from '../../assets/autonomous-station/ETAG-introduction.mp4'
 
 const benefits = [
   {
-    title: 'Cut search time dramatically',
+    title: 'No complex integration, just a mobile and you can start',
     description:
       'Staff no longer dig through stacks of parcels. BLE-guided retrieval gets packages to customers faster.',
   },
   {
     title: 'Reduce misplacement errors',
     description:
-      'Every parcel is linked to a unique tag at intake, so outbound handoffs are accurate and auditable.',
+      'Link with your existing inventory system to reduce misplacement errors',
   },
   {
-    title: 'Scale without extra headcount',
+    title: 'Scale easily',
     description:
-      'Handle higher daily parcel volumes with the same team using scan-first workflows and floating smart bar tools.',
+      'Handle higher daily inventory volumes with the same equipment',
   },
 ]
 
@@ -29,8 +29,8 @@ export default function Benefits() {
               Why choose Easycube-TAG
             </h2>
             <p className="mt-4 text-lg text-easycube-text-secondary">
-              Turn parcel chaos into a repeatable system your front-line staff
-              can trust — from first scan to customer pickup.
+              Turn inventory chaos into a repeatable system your front-line staff
+              can trust — from first scan to pickup.
             </p>
 
             <ul className="mt-10 space-y-6">
@@ -54,7 +54,7 @@ export default function Benefits() {
             </ul>
 
             <div className="mt-10">
-              <CtaButton href="/autonomous-station#contact">Request a Demo</CtaButton>
+              <CtaButton href="/#contact">Request a Demo</CtaButton>
             </div>
           </div>
 

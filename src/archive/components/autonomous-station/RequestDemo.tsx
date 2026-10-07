@@ -12,7 +12,7 @@ export default function RequestDemo() {
           Autonomous Station fits your collection point.
         </p>
         <div className="mt-8">
-          <CtaButton href="/autonomous-station#contact" className="!w-auto">
+          <CtaButton href="/#contact" className="!w-auto">
             Request a Demo
           </CtaButton>
         </div>

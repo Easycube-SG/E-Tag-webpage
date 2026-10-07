@@ -1,35 +1,185 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 
-const faqs = [
+type Faq = {
+  question: string
+  answer: ReactNode
+}
+
+const faqs: Faq[] = [
   {
-    question: 'What hardware do I need to get started?',
-    answer:
-      'You need an Android gateway device (phone), BLE tags, and a Bluetooth advertiser unit. Contact us to order tags and hardware for your plan.',
+    question: 'Is Easycube a warehouse management system?',
+    answer: (
+      <>
+        <p>
+          No. Easycube does not replace your WMS, ERP or inventory software.
+        </p>
+        <p className="mt-3">
+          We use the SKU and location information you already have and connect
+          those locations to physical wireless tags.
+        </p>
+      </>
+    ),
   },
   {
-    question: 'How long is the parcel held?',
-    answer:
-      'Parcel are held for 3 days.',
+    question: 'Do I need to integrate Easycube with my WMS?',
+    answer: (
+      <>
+        <p>
+          Not necessarily. The initial system can work from a simple
+          SKU-to-location database or exported file.
+        </p>
+        <p className="mt-3">
+          The goal is to keep initial deployment as lightweight as possible.
+        </p>
+      </>
+    ),
   },
   {
-    question: 'How long does setup take?',
-    answer:
-      'Most shops complete setup in under an hour. Pair your Bluetooth device, register tags, and your team can start scanning parcels immediately.',
+    question: 'Do I need to re-label my warehouse?',
+    answer: (
+      <>
+        <p>
+          No. Easycube is designed to work with your existing rack, shelf and
+          bin barcodes.
+        </p>
+        <p className="mt-3">
+          The existing location barcode is paired with an Easycube tag during
+          setup.
+        </p>
+      </>
+    ),
   },
   {
-    question: 'Does it work offline?',
-    answer:
-      'Yes. Tagging and retrieval work locally over BLE. Events sync to the cloud when your device reconnects to the internet.',
+    question: 'Does my warehouse need Wi-Fi everywhere?',
+    answer: (
+      <>
+        <p>
+          The Easycube tags communicate wirelessly with the Easycube mobile
+          gateway.
+        </p>
+        <p className="mt-3">
+          Exact connectivity requirements will depend on the deployment
+          environment.
+        </p>
+      </>
+    ),
   },
   {
-    question: 'Can I manage multiple shop locations?',
-    answer:
-      'The Enterprise plan supports multi-location dashboards. Contact us to discuss your specific setup.',
+    question: 'Do I need to install wires on the racks?',
+    answer: (
+      <p>
+        No. The tags are wireless and designed to be attached directly to
+        existing locations.
+      </p>
+    ),
   },
   {
-    question: 'What happens when a tag battery runs low?',
-    answer:
-      'The app alerts you when tag signal strength drops. Replacement tags can be ordered directly through your account.',
+    question: 'What happens when I search for an SKU?',
+    answer: (
+      <>
+        <p>
+          The mobile application checks the SKU&apos;s mapped storage location
+          and sends a command through the Easycube gateway.
+        </p>
+        <p className="mt-3">The corresponding physical tag lights up.</p>
+      </>
+    ),
+  },
+  {
+    question: 'Can it work with an order containing multiple SKUs?',
+    answer: (
+      <>
+        <p>
+          Yes. Easycube can guide the operator through multiple mapped locations
+          sequentially.
+        </p>
+        <p className="mt-3">For example:</p>
+        <p className="mt-2 font-medium text-easycube-navy">
+          Item 1 💡 → Item 2 💡 → Item 3 💡
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'What happens if we move an SKU?',
+    answer: (
+      <>
+        <p>Simply update its location mapping.</p>
+        <p className="mt-3">
+          You do not need to move or rebuild the entire system.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Can the same tag be reassigned?',
+    answer: (
+      <>
+        <p>Yes.</p>
+        <p className="mt-3">
+          Tags can be re-paired to different warehouse locations when layouts or
+          storage arrangements change.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Who is Easycube designed for?',
+    answer: (
+      <>
+        <p>Easycube is primarily designed for operations such as:</p>
+        <ul className="mt-3 list-disc space-y-1 pl-5">
+          <li>3PL warehouses</li>
+          <li>e-commerce fulfilment</li>
+          <li>SME distributors</li>
+          <li>spare-parts storage</li>
+          <li>manufacturing stores</li>
+          <li>manual kitting operations</li>
+          <li>warehouses with frequent staff onboarding</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    question: 'How many locations can we start with?',
+    answer: (
+      <>
+        <p>The starter package supports 50 locations.</p>
+        <p className="mt-3">
+          We recommend beginning with a defined warehouse zone or high-frequency
+          SKU area before expanding.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Why is the Pilot Programme cheaper?',
+    answer: (
+      <>
+        <p>
+          We are working with our first group of warehouse partners to validate
+          Search-to-Light in real operations.
+        </p>
+        <p className="mt-3">
+          Pilot customers receive preferential pricing in exchange for feedback
+          and collaboration with our engineering team.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'What happens after the pilot?',
+    answer: (
+      <>
+        <p>
+          If the system provides measurable value, we can discuss expanding
+          Search-to-Light into additional warehouse locations.
+        </p>
+        <p className="mt-3">
+          There is no requirement to automate the entire warehouse.
+        </p>
+      </>
+    ),
   },
 ]
 
@@ -77,7 +227,7 @@ export default function FAQs() {
                   </svg>
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-5 text-easycube-text-secondary">
+                  <div className="px-6 pb-5 text-sm leading-relaxed text-easycube-text-secondary sm:text-base">
                     {faq.answer}
                   </div>
                 )}

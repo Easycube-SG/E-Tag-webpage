@@ -25,11 +25,7 @@ export default function Header({ variant = 'site' }: HeaderProps) {
           {siteNavLinks.map((link) => (
             <a
               key={link.href}
-              href={
-                link.label === 'Contact' && variant === 'autonomous-station'
-                  ? '/autonomous-station#contact'
-                  : link.href
-              }
+              href={link.href}
               className="text-sm font-medium text-easycube-text-secondary transition-colors hover:text-easycube-blue"
             >
               {link.label}
@@ -78,11 +74,7 @@ export default function Header({ variant = 'site' }: HeaderProps) {
             {siteNavLinks.map((link) => (
               <a
                 key={link.href}
-                href={
-                  link.label === 'Contact' && variant === 'autonomous-station'
-                    ? '/autonomous-station#contact'
-                    : link.href
-                }
+                href={link.href}
                 className="rounded-md px-2 py-2 text-sm font-medium text-easycube-text-secondary hover:bg-easycube-muted hover:text-easycube-blue"
                 onClick={() => setMenuOpen(false)}
               >

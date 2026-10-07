@@ -34,18 +34,7 @@ export default function FooterCta({
               </>
             )}
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
-              {isAutonomousStation ? (
-                <CtaButton href="/autonomous-station#contact">
-                  Request a Demo
-                </CtaButton>
-              ) : (
-                <>
-                  <CtaButton href="/#contact">Deliver now</CtaButton>
-                  <CtaButton href="/last-mile-delivery" variant="secondary">
-                    Learn more
-                  </CtaButton>
-                </>
-              )}
+              <CtaButton href="/#contact">Request a Demo</CtaButton>
             </div>
           </div>
         </section>
@@ -64,18 +53,6 @@ export default function FooterCta({
               className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
             >
               Home
-            </a>
-            <a
-              href="/last-mile-delivery"
-              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
-            >
-              Last Mile Delivery
-            </a>
-            <a
-              href="/autonomous-station"
-              className="text-easycube-text-secondary transition-colors hover:text-easycube-blue"
-            >
-              Autonomous Station
             </a>
             <a
               href="/subscription"

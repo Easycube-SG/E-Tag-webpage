@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react'
 import { submitToGoogleForm } from '../../lib/googleForm'
 
-const dailyParcelOptions = [
-  '0 - 200 parcels',
-  '201 - 400 parcels',
-  'Over 400 parcels',
+const skuToTrackOptions = [
+  '1 – 50 SKUs',
+  '51 – 100 SKUs',
+  '101 – 150 SKUs',
+  '151 – 200 SKUs',
+  'Over 200 SKUs',
 ]
 
 type FormData = {
@@ -138,7 +140,7 @@ export default function ContactForm() {
             />
           </Field>
 
-          <Field label="Daily Parcels" htmlFor="dailyParcels" required>
+          <Field label="Number of SKU to track" htmlFor="dailyParcels" required>
             <select
               id="dailyParcels"
               name="dailyParcels"
@@ -149,9 +151,9 @@ export default function ContactForm() {
               className={inputClass}
             >
               <option value="" disabled>
-                Select daily parcel volume
+                Select number of SKUs
               </option>
-              {dailyParcelOptions.map((option) => (
+              {skuToTrackOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>

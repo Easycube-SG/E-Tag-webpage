@@ -1,65 +1,63 @@
-const features = [
+import imgPhone from '../../assets/use your own device.png'
+import imgFaster from '../../assets/find thing faster.png'
+import imgAnyone from '../../assets/anyone can find.png'
+import imgSimple from '../../assets/reliable.png'
+
+const helps = [
   {
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
-      </svg>
-    ),
-    title: 'Automate Manual Search and Sort',
+    title: 'Works With Just Your Phone',
     description:
-      'Digitalise with our BLE tag and find your inventory in seconds.',
+      'No expensive  scanners or complex cloud integration. Use any Android phone you have.',
+    image: imgPhone,
+    alt: 'Placeholder visual for phone-based workflow',
   },
   {
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
-      </svg>
-    ),
-    title: 'Light and Sound guidance',
+    title: 'Find Items Faster',
     description:
-      'Key in PIN and activate PIN. Your or customer can follow the light and sound guidance to find the parcel.',
+      'Scan or search an order → the correct tag lights up. Less time reading labels or searching shelves.',
+    image: imgFaster,
+    alt: 'Placeholder visual for faster item finding',
   },
   {
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-      </svg>
-    ),
-    title: 'Time Saving',
+    title: 'Anyone Can Find It',
     description:
-      'Save more than 80% of your time on outbound processes.',
+      'No warehouse knowledge required. Anyone can follow the same simple mobile workflow.',
+    image: imgAnyone,
+    alt: 'Placeholder visual for easy staff onboarding',
+  },
+  {
+    title: 'Simple. Reliable. Effective.',
+    description:
+      'A straightforward physical guide that helps reduce search time and picking mistakes.',
+    image: imgSimple,
+    alt: 'Placeholder visual for simple reliable guidance',
   },
 ]
 
 export default function Introduction() {
   return (
-    <section id="features" className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-easycube-navy sm:text-4xl">
-            What Easycube TAG does
-          </h2>
-          <p className="mt-4 text-lg text-easycube-text-secondary">
-            A complete parcel tagging system built for busy collection points,
-            lockers, and retail counters.
-          </p>
-        </div>
+    <section id="how-it-benefits" className="bg-white py-16 sm:py-18">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-center text-3xl font-bold text-easycube-navy sm:text-4xl">
+          How Easycube Helps
+        </h2>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {features.map((feature) => (
-            <article
-              key={feature.title}
-              className="rounded-2xl border border-easycube-border bg-easycube-muted/50 p-6 transition-shadow hover:shadow-md sm:p-8"
-            >
-              <div className="mb-5 inline-flex rounded-xl bg-easycube-blue-light p-3 text-easycube-blue">
-                {feature.icon}
+        <div className="mt-8 grid gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-8">
+          {helps.map((item) => (
+            <article key={item.title}>
+              <div className="overflow-hidden rounded-2xl bg-easycube-muted">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  className="aspect-[4/3] h-auto w-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              <h3 className="text-xl font-semibold text-easycube-navy">
-                {feature.title}
+              <h3 className="mt-5 text-xl font-bold text-easycube-navy sm:text-2xl">
+                {item.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-easycube-text-secondary">
-                {feature.description}
+              <p className="mt-3 text-base leading-relaxed text-easycube-text-secondary">
+                {item.description}
               </p>
             </article>
           ))}

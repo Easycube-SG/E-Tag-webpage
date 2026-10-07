@@ -4,7 +4,7 @@ import Hero from '../components/autonomous-station/Hero'
 import Introduction from '../components/autonomous-station/Introduction'
 import Benefits from '../components/autonomous-station/Benefits'
 import Workflow from '../components/autonomous-station/Workflow'
-import RequestDemo from '../components/autonomous-station/RequestDemo'
+import Pricing from '../components/autonomous-station/Pricing'
 import FAQs from '../components/autonomous-station/FAQs'
 import ContactForm from '../components/autonomous-station/ContactForm'
 
@@ -14,10 +14,10 @@ export default function AutonomousStationPage() {
       <Header variant="autonomous-station" />
       <main>
         <Hero />
+        <Workflow />
         <Introduction />
         <Benefits />
-        <Workflow />
-        <RequestDemo />
+        <Pricing />
         <FAQs />
         <ContactForm />
         <FooterCta variant="autonomous-station" />

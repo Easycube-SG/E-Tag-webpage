@@ -1,10 +1,23 @@
+/** Standard Easycube TAG package (list price). */
+export const TAG_PACKAGE_SGD = Number(
+  import.meta.env.VITE_TAG_PACKAGE_SGD ?? 2500,
+)
+
+/** Station Pilot package — same benefits at pilot discount. */
+export const PILOT_PACKAGE_SGD = Number(
+  import.meta.env.VITE_PILOT_PACKAGE_SGD ?? 1500,
+)
+
+/** One-time registration deposit for Station Pilot. */
 export const PILOT_DEPOSIT_SGD = Number(
   import.meta.env.VITE_PILOT_DEPOSIT_SGD ??
     import.meta.env.VITE_PILOT_MONTHLY_SGD ??
-    20,
+    300,
 )
+
 /** @deprecated Use PILOT_DEPOSIT_SGD — kept for older env var names. */
 export const PILOT_MONTHLY_SGD = PILOT_DEPOSIT_SGD
+
 export const STANDARD_MONTHLY_SGD = Number(
   import.meta.env.VITE_STANDARD_MONTHLY_SGD ?? 39,
 )
@@ -22,6 +35,9 @@ export const STANDARD_PARCEL_CENTS = Number(
 )
 
 export function formatSgd(amount: number): string {
+  if (amount >= 1000) {
+    return `S$${amount.toLocaleString('en-SG')}`
+  }
   return `S$${amount % 1 === 0 ? amount : amount.toFixed(2)}`
 }
 

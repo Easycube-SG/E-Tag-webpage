@@ -3,8 +3,7 @@ export type HeaderVariant = 'site' | 'autonomous-station'
 export type NavLink = { label: string; href: string }
 
 export const siteNavLinks: NavLink[] = [
-  { label: 'Last Mile Delivery', href: '/last-mile-delivery' },
-  { label: 'Autonomous Station', href: '/autonomous-station' },
+  { label: 'How it benefits', href: '/#how-it-benefits' },
   { label: 'Station Pilot', href: '/pilot-trial' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -14,7 +13,7 @@ export function getHeaderCta(variant: HeaderVariant): {
   href: string
 } {
   if (variant === 'autonomous-station') {
-    return { label: 'Request a Demo', href: '/autonomous-station#contact' }
+    return { label: 'Request a Demo', href: '/#contact' }
   }
-  return { label: 'Deliver now', href: '/#contact' }
+  return { label: 'Request a Demo', href: '/#contact' }
 }

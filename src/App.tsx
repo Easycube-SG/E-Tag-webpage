@@ -1,8 +1,7 @@
 import Header from './components/Header'
 import FooterCta from './components/FooterCta'
-import LandingPage from './pages/LandingPage'
 import AutonomousStationPage from './pages/AutonomousStationPage'
-import LastMileDeliveryPage from './pages/LastMileDeliveryPage'
+// Hidden from live routes (kept in codebase): LandingPage, LastMileDeliveryPage
 import SubscribeSuccess from './components/SubscribeSuccess'
 import SubscriptionPage from './pages/SubscriptionPage'
 import CheckoutPage from './pages/CheckoutPage'
@@ -68,19 +67,14 @@ function App() {
     )
   }
 
-  if (pathname === '/autonomous-station') {
+  // Main site homepage — Autonomous Station
+  // /autonomous-station kept as an alias for existing links
+  if (pathname === '/' || pathname === '/autonomous-station') {
     return <AutonomousStationPage />
   }
 
-  if (pathname === '/last-mile-delivery') {
-    return (
-      <AppShell>
-        <LastMileDeliveryPage />
-      </AppShell>
-    )
-  }
-
-  return <LandingPage />
+  // Unknown paths fall back to Autonomous Station
+  return <AutonomousStationPage />
 }
 
 export default App

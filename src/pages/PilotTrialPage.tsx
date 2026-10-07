@@ -1,16 +1,24 @@
 import {
-  formatCentsPerParcel,
   formatSgd,
   PILOT_DEPOSIT_SGD,
-  PILOT_PARCEL_CENTS,
-  PILOT_TAG_UNIT_PRICE_SGD,
-  STANDARD_PARCEL_CENTS,
-  STANDARD_TAG_UNIT_PRICE_SGD,
+  PILOT_PACKAGE_SGD,
+  TAG_PACKAGE_SGD,
 } from '../lib/pricing'
+
+const pilotIncludes = [
+  '100 Easycube wireless light tags',
+  '1 Easycube mobile gateway',
+  'Android Search-to-Light application',
+  'SKU/location database import',
+  'Tag-to-location setup tools',
+  'Search-to-light functionality',
+  'Sequential order-picking support',
+  'Onboarding and setup support',
+]
 
 const sections = [
   {
-    id: 'Pilot Trialist Benefits',
+    id: 'benefits',
     title: 'Pilot Benefits',
     icon: (
       <path
@@ -21,17 +29,52 @@ const sections = [
     ),
     body: (
       <>
-        Trialists get tags at{' '}
+        Station Pilot gets the{' '}
+        <strong className="text-easycube-navy">same Easycube TAG package</strong>{' '}
+        as our standard offer (up to 50 searchable warehouse locations), at a
+        discounted pilot price of{' '}
         <strong className="text-easycube-navy">
-          {formatSgd(PILOT_TAG_UNIT_PRICE_SGD)}/tag
+          {formatSgd(PILOT_PACKAGE_SGD)}
         </strong>{' '}
-        (standard price {formatSgd(STANDARD_TAG_UNIT_PRICE_SGD)}/tag). This is only collected <strong className="text-easycube-navy">after the trial ends</strong>.
-        For usage after the trial, Pilot is billed at{' '}
-        <strong className="text-easycube-navy">
-          {formatCentsPerParcel(PILOT_PARCEL_CENTS)} per parcel
-        </strong>{' '}
-        (Standard at {formatCentsPerParcel(STANDARD_PARCEL_CENTS)} per parcel).
+        instead of {formatSgd(TAG_PACKAGE_SGD)}.
       </>
+    ),
+  },
+  {
+    id: 'includes',
+    title: 'What you get',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+      />
+    ),
+    body: (
+      <ul className="mt-1 space-y-2">
+        {pilotIncludes.map((item) => (
+          <li key={item} className="flex items-start gap-2">
+            <svg
+              className="mt-0.5 h-4 w-4 shrink-0 text-easycube-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+              aria-hidden
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 12.75l6 6 9-13.5"
+              />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+        <li className="pt-1 text-easycube-text-secondary">
+          No rack wiring required. No WMS replacement required.
+        </li>
+      </ul>
     ),
   },
   {
@@ -46,10 +89,13 @@ const sections = [
     ),
     body: (
       <>
-        The pilot trial commence at end of July (A session will be arranged to do the setup and training prior to the trial) 
-        and runs for <strong className="text-easycube-navy">1 month</strong>.
-        During this period your shop uses Easycube TAG with our team supporting
-        setup and feedback.
+        A setup and training session is arranged before the trial. The pilot
+        runs with our team supporting onboarding and feedback. Final package
+        billing is settled at the pilot price of{' '}
+        <strong className="text-easycube-navy">
+          {formatSgd(PILOT_PACKAGE_SGD)}
+        </strong>{' '}
+        if you continue after the trial.
       </>
     ),
   },
@@ -69,7 +115,8 @@ const sections = [
         <strong className="text-easycube-navy">
           {formatSgd(PILOT_DEPOSIT_SGD)} deposit
         </strong>{' '}
-        to register your interest. If the trial meet your expectations, we will work on the detail billing.
+        to register your interest. The deposit is credited toward the pilot
+        package price of {formatSgd(PILOT_PACKAGE_SGD)} when you proceed.
       </>
     ),
   },
@@ -81,13 +128,15 @@ export default function PilotTrialPage() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-easycube-blue">
-            Pilot program
+            Station Pilot
           </p>
           <h1 className="mt-2 text-3xl font-bold text-easycube-navy sm:text-4xl">
-            Pilot Trial Onboarding
+            Station Pilot Onboarding
           </h1>
           <p className="mt-4 text-lg text-easycube-text-secondary">
-            Everything you need to know before joining as a pilot trialist
+            Same Easycube TAG package at a pilot price of{' '}
+            {formatSgd(PILOT_PACKAGE_SGD)} — register with a{' '}
+            {formatSgd(PILOT_DEPOSIT_SGD)} deposit.
           </p>
         </div>
 
@@ -109,13 +158,13 @@ export default function PilotTrialPage() {
                     {section.icon}
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <h2 className="text-lg font-semibold text-easycube-navy">
                     {section.title}
                   </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-easycube-text-secondary">
+                  <div className="mt-2 text-sm leading-relaxed text-easycube-text-secondary">
                     {section.body}
-                  </p>
+                  </div>
                 </div>
               </div>
             </article>
@@ -128,7 +177,7 @@ export default function PilotTrialPage() {
           </h2>
           <p className="mt-2 text-sm text-easycube-text-secondary">
             Pay the {formatSgd(PILOT_DEPOSIT_SGD)} deposit securely online to
-            confirm your spot in the pilot program.
+            confirm your spot in the Station Pilot program.
           </p>
           <div className="mt-6">
             <a
