@@ -1,7 +1,7 @@
 import CtaButton from '../CtaButton'
 
 const eyebrow = 'Easycube SG - Connect your inventory'
-const headline = 'Make Every Warehouse Searchable'
+const headline = 'Make Every Inventory Searchable'
 const subline =
   'Find any item. By anyone. From your phone.'
 
@@ -56,7 +56,7 @@ export default function Hero() {
                 {subline}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <CtaButton href="/#contact" className="!w-auto">Join Pilot</CtaButton>
+                <CtaButton href="/#pricing" className="!w-auto">Join Pilot</CtaButton>
                 <CtaButton href="/autonomous-station#workflow" variant="secondary" className="!w-auto">
                   See How It Works
                 </CtaButton>
