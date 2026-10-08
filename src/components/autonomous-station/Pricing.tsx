@@ -63,11 +63,16 @@ export default function Pricing() {
               <h3 className="text-xl font-bold text-easycube-navy sm:text-2xl">
                 SME
               </h3>
-              <p className="mt-3 text-4xl font-bold tracking-tight text-easycube-blue sm:text-5xl">
-                S$2,500
+              <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-2xl font-bold tracking-tight text-easycube-text-secondary line-through sm:text-3xl">
+                  S$2,500
+                </span>
+                <span className="text-4xl font-bold tracking-tight text-easycube-blue sm:text-5xl">
+                  S$1,500
+                </span>
               </p>
               <p className="mt-3 text-base text-easycube-text-secondary">
-                For up to 100 searchable warehouse locations.
+                For pilot trail only. Join now!
               </p>
             </div>
 
